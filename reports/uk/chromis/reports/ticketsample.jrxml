@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"  ?>
+<!-- Created with iReport - A designer for JasperReports -->
+<!DOCTYPE jasperReport PUBLIC "//JasperReports//DTD Report Design//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
+<jasperReport
+		 name="ticketsample"
+		 columnCount="1"
+		 printOrder="Vertical"
+		 orientation="Portrait"
+		 pageWidth="595"
+		 pageHeight="842"
+		 columnWidth="535"
+		 columnSpacing="0"
+		 leftMargin="30"
+		 rightMargin="30"
+		 topMargin="20"
+		 bottomMargin="20"
+		 whenNoDataType="NoPages"
+		 isTitleNewPage="false"
+		 isSummaryNewPage="false">
+	<property name="ireport.scriptlethandling" value="0" />
+	<property name="ireport.encoding" value="UTF-8" />
+	<import value="java.util.*" />
+	<import value="net.sf.jasperreports.engine.*" />
+	<import value="net.sf.jasperreports.engine.data.*" />
+ 
+	<parameter name="SUBREPORT_DIR" isForPrompting="true" class="java.lang.String">
+		<defaultValueExpression ><![CDATA["./"]]></defaultValueExpression>
+	</parameter>
+ 
+	<field name="TICKET" class="uk.chromis.pos.ticket.TicketInfo"/>
+	<field name="PLACE" class="java.lang.String"/>
+	<field name="TAXESLOGIC" class="java.lang.Object"/>
+	<background>
+
+	</background>
+	<title>
+		<band height="36">
+			<staticText>
+				<reportElement x="70" y="0" width="376" height="30" />
+				<textElement textAlignment="Center">
+					<font fontName="Verdana" size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Florentino Moreno García]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="80">
+			<rectangle>
+				<reportElement key="rectangle-2" x="312" y="0" width="215" height="77"/>
+			</rectangle>
+			<rectangle>
+				<reportElement key="rectangle-1" x="10" y="0" width="302" height="77" uuid="78c79b10-d99f-4b7d-bb3d-f9a27befe9f7"/>
+			</rectangle>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField-2" x="128" y="4" width="156" height="21" uuid="eacfb670-cbf8-4fa6-84ed-85c34de8c0f9"/>
+				<textFieldExpression><![CDATA[$F{TICKET}.printId()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement key="staticText-3" x="19" y="4" width="109" height="21" uuid="38887874-6796-47a9-a7d6-4a3eb75ec006"/>
+				<textElement>
+					<font isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Factura Nº:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-4" x="19" y="25" width="109" height="21" uuid="00404d49-4e6c-4c19-9cf1-e4d13a06d3ca"/>
+				<textElement>
+					<font isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Fecha:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField-3" x="128" y="25" width="156" height="21" uuid="ce3873c4-0e02-49bc-a0c1-7b582896f499"/>
+				<textFieldExpression><![CDATA[$F{TICKET}.printDate()]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField-4" x="324" y="4" width="188" height="19" uuid="ccef5c74-37ff-4243-a247-c67198283273">
+					<printWhenExpression><![CDATA[Boolean.valueOf($F{TICKET}.getCustomer() != null)]]></printWhenExpression>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{TICKET}.getCustomer().getName()]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField-5" x="324" y="25" width="188" height="19" uuid="fc4591e8-df64-4fd4-b1f2-120297653ed5">
+					<printWhenExpression><![CDATA[Boolean.valueOf($F{TICKET}.getCustomer() != null)]]></printWhenExpression>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{TICKET}.getCustomer().getTaxid()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="68" splitType="Immediate">
+			<subreport isUsingCache="true">
+				<reportElement key="subreport-1" x="10" y="0" width="517" height="65" uuid="3aa645f4-6bd7-410f-8c9a-8b3c745201a7"/>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource(
+$F{TICKET}.getLines()
+)]]></dataSourceExpression>
+				<subreportExpression><![CDATA[JasperCompileManager.compileReport(
+net.sf.jasperreports.engine.xml.JRXmlLoader.load(getClass().getResourceAsStream(
+"/uk/chromis/reports/ticketsample_lines.jrxml"
+))
+)]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<lastPageFooter>
+		<band height="50"/>
+	</lastPageFooter>
+	<summary>
+		<band height="264" splitType="Stretch">
+			<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.FreeLayout"/>
+			<rectangle>
+				<reportElement key="rectangle-3" x="10" y="3" width="517" height="187" uuid="6e13ac0f-9b12-43c2-97fa-a4b4b0646a67"/>
+			</rectangle>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField-6" x="324" y="33" width="188" height="19" uuid="0d3d2ec5-5195-4137-ad86-b6fda67c89e9"/>
+				<textElement textAlignment="Right">
+					<font size="12" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{TICKET}.printTax()]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField-7" x="324" y="52" width="188" height="19" uuid="c82b05c2-99b2-406b-8ae8-af5725af3f94"/>
+				<textElement textAlignment="Right">
+					<font size="12" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{TICKET}.printTotal()]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField-8" x="324" y="14" width="188" height="19" uuid="20fdf50d-b685-4bda-b1ab-95910c454751"/>
+				<textElement textAlignment="Right">
+					<font size="12" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{TICKET}.printSubTotal()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement key="staticText-6" x="164" y="14" width="160" height="19" uuid="bd731679-1dba-4ef2-974d-ad4b09a51b45"/>
+				<textElement>
+					<font isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Base Imponible]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-8" x="164" y="33" width="160" height="19" uuid="f39efe89-3637-4f2e-9fef-08eb6956094e"/>
+				<textElement>
+					<font isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Impuestos]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-9" x="164" y="52" width="160" height="19" uuid="746ee681-feb6-4ba1-b843-890a4c92bbab"/>
+				<textElement>
+					<font isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="10" y="170" width="80" height="20" uuid="a26cd379-951d-4758-8e14-05b325bb56e5"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="92" y="170" width="40" height="20" uuid="42aa82f3-ab95-49bf-83ec-26023d7214d4"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<subreport isUsingCache="true">
+				<reportElement key="subreport-1" x="9" y="90" width="517" height="65" uuid="0db4d973-829c-4159-b0c4-835217e1636b"/>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{TICKET}.getTaxes())]]></dataSourceExpression>
+				<subreportExpression><![CDATA[JasperCompileManager.compileReport(net.sf.jasperreports.engine.xml.JRXmlLoader.load(getClass().getResourceAsStream("/uk/chromis/reports/tickettax_lines.jrxml")))]]></subreportExpression>
+			</subreport>
+		</band>
+	</summary>
+</jasperReport>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.2.1.final using JasperReports Library version 6.1.1  -->
+<!-- 2016-05-11T19:50:22 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ticketsample_lines" pageWidth="535" pageHeight="802" columnWidth="535" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="a38a612d-5c4c-4833-946b-1c44d2f283f4">
+	<property name="ireport.scriptlethandling" value="0"/>
+	<property name="ireport.encoding" value="UTF-8"/>
+	<import value="net.sf.jasperreports.engine.*"/>
+	<import value="java.util.*"/>
+	<import value="net.sf.jasperreports.engine.data.*"/>
+	<field name="productName" class="java.lang.String"/>
+	<field name="_THIS" class="uk.chromis.pos.ticket.TicketLineInfo"/>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="24" splitType="Stretch">
+			<rectangle>
+				<reportElement key="rectangle-1" x="0" y="0" width="517" height="24" uuid="b9776bd8-346a-451c-b705-bf2f12d2b179"/>
+			</rectangle>
+			<staticText>
+				<reportElement key="staticText-1" x="12" y="5" width="149" height="14" uuid="ae396ebb-88ec-4378-9c2b-43ff260b07a6"/>
+				<textElement>
+					<font isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-2" x="176" y="5" width="113" height="14" uuid="e999fefd-07f4-4c7c-b76e-5baa2354c5a0"/>
+				<textElement textAlignment="Right">
+					<font isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Price]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-4" x="360" y="5" width="136" height="14" uuid="312f2f88-e8db-43dd-81d2-463d89562694"/>
+				<textElement textAlignment="Right">
+					<font isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-5" x="289" y="5" width="71" height="14" uuid="41a0e498-3b9b-4d75-8a2a-331bf1ffd9bc"/>
+				<textElement textAlignment="Right">
+					<font isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Units]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<rectangle>
+				<reportElement key="rectangle-2" x="0" y="0" width="517" height="20" uuid="0e0dff6c-0587-41ca-98f8-45a49f98a64c"/>
+			</rectangle>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField-1" x="12" y="0" width="149" height="18" uuid="e89112d0-059a-4a58-a172-e48a7f461e18"/>
+				<textFieldExpression><![CDATA[$F{productName}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField-2" x="360" y="0" width="136" height="18" uuid="10a6a3bb-3dad-4e17-8417-f7bbe66fa6fa"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{_THIS}.printSubValue()]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField-3" x="176" y="0" width="113" height="18" uuid="1760d345-b6b7-4e84-b1dc-cb3fc053e8e3"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{_THIS}.printPrice()]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField-4" x="289" y="0" width="71" height="18" uuid="f4190fea-aee5-43ac-b73d-16b92239173d"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{_THIS}.printMultiply()]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

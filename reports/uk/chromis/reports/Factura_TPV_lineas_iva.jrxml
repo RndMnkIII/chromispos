@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.2.1.final using JasperReports Library version 6.2.1  -->
+<!-- 2016-05-12T11:01:14 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Factura_TPV_lineas_iva" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c7066a59-0cf7-4a1a-8eb1-f75ef6679291">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<import value="net.sf.jasperreports.engine.*"/>
+	<import value="java.util.*"/>
+	<import value="net.sf.jasperreports.engine.data.*"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="_THIS" class="uk.chromis.pos.ticket.TicketTaxInfo"/>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="24" splitType="Stretch">
+			<rectangle>
+				<reportElement key="rectangle-1" x="0" y="0" width="517" height="24" uuid="45a14dc4-0ea6-4704-9a0e-a303e9347fb1"/>
+			</rectangle>
+			<staticText>
+				<reportElement key="staticText-1" x="12" y="5" width="149" height="14" uuid="cb687ad7-2dab-42c5-9699-9886a4bae297"/>
+				<textElement>
+					<font isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[IVA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-2" x="176" y="5" width="113" height="14" uuid="684d4efd-9d82-4750-b9e2-f8a422da85e4"/>
+				<textElement textAlignment="Right">
+					<font isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Base imponible]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-4" x="360" y="5" width="136" height="14" uuid="1c93b65d-73e1-4f16-b710-bef7d1fd3021"/>
+				<textElement textAlignment="Right">
+					<font isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Importe IVA]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<rectangle>
+				<reportElement key="rectangle-2" x="0" y="0" width="517" height="20" uuid="8f863bb5-3aca-47bc-83fa-dba178f399a1"/>
+			</rectangle>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField-1" x="12" y="0" width="149" height="18" uuid="4b7d4e84-0144-4fb8-8a36-2ee9516704b1"/>
+				<textFieldExpression><![CDATA[$F{_THIS}.getTaxInfo()]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField-2" x="176" y="0" width="136" height="18" uuid="95194866-af85-4331-ab87-d187ff75044f"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{_THIS}.printSubTotal()]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField-3" x="360" y="0" width="113" height="18" uuid="49bf00d7-5a1b-46d2-99ca-25b8ef53add7"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{_THIS}.printTax()]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+</jasperReport>

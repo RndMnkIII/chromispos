@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.2.1.final using JasperReports Library version 6.2.1  -->
+<!-- 2016-05-12T10:44:30 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Blank_A4" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="1d2bc896-6bcc-4dd1-a34f-7e07c3c84dd7">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<import value="java.util.concurrent.*"/>
+	<import value="net.sf.jasperreports.engine.analytics.*"/>
+	<import value="net.sf.jasperreports.engine.data.*"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="TICKET" class="uk.chromis.pos.ticket.TicketInfo"/>
+	<field name="PLACE" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="TAXES_LOGIC" class="java.lang.Object">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="164" splitType="Stretch">
+			<image scaleImage="RetainShape">
+				<reportElement key="image-1" x="134" y="0" width="362" height="162" uuid="62b6a7ef-7d34-4430-bae1-5b1501e36e4c"/>
+				<box></box>
+					<graphicElement stretchType="RelativeToTallestObject"/>
+					<imageExpression class="java.lang.String"><![CDATA["reports/uk/chromis/reports/logo-florentino.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="84" splitType="Stretch">
+			<rectangle>
+				<reportElement key="rectangle-2" x="312" y="7" width="215" height="77" uuid="e19895d0-cdf8-419a-8730-1e7fa56014cb"/>
+			</rectangle>
+			<rectangle>
+				<reportElement key="rectangle-1" x="10" y="7" width="302" height="77" uuid="82b49867-1174-4ce0-8ef9-a2f843cb9bc2"/>
+			</rectangle>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField-2" x="128" y="11" width="156" height="21" uuid="ff76af11-eba3-4994-a6fb-1d948351efe4"/>
+				<textFieldExpression><![CDATA[$F{TICKET}.printId()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement key="staticText-3" x="19" y="11" width="109" height="21" uuid="fac7c00b-f725-4713-8ef4-e585c1a58dc4"/>
+				<textElement>
+					<font isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Factura Nº:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-4" x="19" y="32" width="109" height="21" uuid="dd53a30a-0007-4d9e-ab22-5d7ca6c178bb"/>
+				<textElement>
+					<font isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Fecha:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField-3" x="128" y="32" width="156" height="21" uuid="2bf476fe-cf47-4b23-a99b-f10160c925c8"/>
+				<textFieldExpression><![CDATA[$F{TICKET}.printDate()]]></textFieldExpression>
+			</textField>
+
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField-4" x="324" y="11" width="188" height="19" uuid="a282c5aa-d859-46ac-86a8-22c642a9dcf0">
+					<printWhenExpression><![CDATA[Boolean.valueOf($F{TICKET}.getCustomer() != null)]]></printWhenExpression>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{TICKET}.getCustomer().getName()]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField-5" x="324" y="32" width="188" height="19" uuid="23fb3ded-f40f-4542-b744-e18dc23dc285">
+					<printWhenExpression><![CDATA[Boolean.valueOf($F{TICKET}.getCustomer() != null)]]></printWhenExpression>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{TICKET}.getCustomer().getTaxid()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="85" splitType="Stretch">
+			<subreport isUsingCache="true">
+				<reportElement key="subreport-1" x="10" y="10" width="517" height="65" uuid="558cf368-164e-4cc9-8f77-a651cf2d0ad2"/>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource(
+$F{TICKET}.getLines()
+)]]></dataSourceExpression>
+				<subreportExpression><![CDATA[JasperCompileManager.compileReport(
+net.sf.jasperreports.engine.xml.JRXmlLoader.load(getClass().getResourceAsStream(
+"/uk/chromis/reports/Factura_TPV_lineas_articulo.jrxml"
+))
+)]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="92">
+			<subreport isUsingCache="true">
+				<reportElement key="subreport-1" x="10" y="15" width="517" height="65" uuid="76b681af-83fe-4eaa-a2b4-b76ae6d9767d"/>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource(
+$F{TICKET}.getTaxes()
+)]]></dataSourceExpression>
+				<subreportExpression><![CDATA[JasperCompileManager.compileReport(
+net.sf.jasperreports.engine.xml.JRXmlLoader.load(getClass().getResourceAsStream(
+"/uk/chromis/reports/Factura_TPV_lineas_iva.jrxml"
+))
+)]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<lastPageFooter>
+		<band height="100">
+			<rectangle>
+				<reportElement key="rectangle-3" x="10" y="10" width="517" height="81" uuid="ea6dab0f-3d7e-433d-ba48-335751b112eb"/>
+			</rectangle>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField-6" x="324" y="40" width="188" height="19" uuid="e1a0aa6a-7e33-4a84-b0cd-e4d46328eb58"/>
+				<textElement textAlignment="Right">
+					<font size="12" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{TICKET}.printTax()]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField-7" x="324" y="59" width="188" height="19" uuid="43a26444-784b-4f24-bb8c-a5ab5586a56c"/>
+				<textElement textAlignment="Right">
+					<font size="12" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{TICKET}.printTotal()]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField-8" x="324" y="21" width="188" height="19" uuid="886bd2a4-2f9a-4301-9767-94ec3907642b"/>
+				<textElement textAlignment="Right">
+					<font size="12" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{TICKET}.printSubTotal()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement key="staticText-6" x="164" y="21" width="160" height="19" uuid="9df43162-5fa9-461c-bc47-c8d484128381"/>
+				<textElement>
+					<font isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Subtotal]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-8" x="164" y="40" width="160" height="19" uuid="3330dbf5-bc1a-4f04-ab77-250d6c1560ee"/>
+				<textElement>
+					<font isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Impuestos]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-9" x="164" y="59" width="160" height="19" uuid="e3d9b503-7a06-4c23-90ae-66af2760dacd"/>
+				<textElement>
+					<font isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+		</band>
+	</lastPageFooter>
+	<summary>
+		<band height="19" splitType="Stretch"/>
+	</summary>
+</jasperReport>
