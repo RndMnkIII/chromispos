@@ -147,10 +147,10 @@ public class TicketLineInfo implements SerializableWrite, SerializableRead, Seri
     }
 
     public TicketLineInfo(TicketLineInfo line) {
-        //*** Inicio modificaciones RndMnkIII
+        //*** START modificaciones RndMnkIII
         init(line.productid, line.attsetinstid, line.multiply, line.priceBD.doubleValue(),
                 line.tax, (Properties) line.attributes.clone(), line.refundQty);
-        //*** Fin modificaciones RndMnkIII
+        //*** END modificaciones RndMnkIII
     }
 
     private void init(String productid, String attsetinstid, double dMultiply,
