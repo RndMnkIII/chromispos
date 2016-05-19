@@ -601,7 +601,7 @@ public abstract class JPanelTicket extends JPanel implements JPanelView, BeanFac
             String vl_items = m_oTicket.printArticlesCount2();
             //visorTicketLine2(m_oTicket, oLine);
             visorTicketLine3(vl_subtotal,vl_tax, vl_total, vl_items, oLine);
-            //End of modifications by RndMnkIV            
+            //End of modifications by RndMnkIV*/          
             printPartialTotals();
             stateToZero();
 
@@ -740,7 +740,7 @@ public abstract class JPanelTicket extends JPanel implements JPanelView, BeanFac
             visorTicketLine3(vl_subtotal, vl_tax, vl_total, vl_items, oLine);
             
 
-            //End of modifications by RndMnkIV  
+            //End of modifications by RndMnkIV
             printPartialTotals();
             stateToZero();
 
@@ -1786,7 +1786,7 @@ public abstract class JPanelTicket extends JPanel implements JPanelView, BeanFac
                 ScriptEngine script = ScriptFactory.getScriptEngine(ScriptFactory.VELOCITY);
                 script.put("ticketline", oLine);
                 script.put("ticket", oTicket);
-                m_TTP.printTicket(script.eval(dlSystem.getResourceAsXML("Printer.TicketLine")).toString());
+                m_TTP.printTicket(script.eval(dlSystem.getResourceAsXML("Printer.TicketLine2")).toString());
             } catch (ScriptException | TicketPrinterException e) {
                 MessageInf msg = new MessageInf(MessageInf.SGN_WARNING, AppLocal.getIntString("message.cannotprintline"), e);
                 msg.show(JPanelTicket.this);

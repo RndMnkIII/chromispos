@@ -21,7 +21,7 @@ set CP=%CP%;"%DIRNAME%locales/Portuguese"
 set CP=%CP%;"%DIRNAME%locales/Spanish"
 set CP=%CP%;"%DIRNAME%reports/"
 
-MODE COM10 BAUD=9600 PARITY=n DATA=8 STOP=1
+MODE COM3 BAUD=9600 PARITY=n DATA=8 STOP=1
 
 javaw -cp %CP% -Djava.library.path="%DIRNAME%lib/Windows/i368-mingw64" -Ddirname.path="%DIRNAME%./" changeiconset.changeiconset %1
 
