@@ -800,7 +800,7 @@ public abstract class JPanelTicket extends JPanel implements JPanelView, BeanFac
                 
                 //Start of modifications by RndMnkIV
                 //visorTicketLine(null);
-                visorTicketLine2(null, null);
+                //visorTicketLine2(null, null);
                 visorTicketLine3(null,null, null, null, null);
                 
                 //End of modifications by RndMnkIV

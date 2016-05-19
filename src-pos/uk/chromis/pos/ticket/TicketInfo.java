@@ -773,14 +773,20 @@ public final class TicketInfo implements SerializableRead, Externalizable {
     }
 
     public String printTotalPaid() {
+        System.out.println("---------------------------------");
+        System.out.println("Total Paid: "+ getTotalPaid());
         return Formats.CURRENCY.formatValue(getTotalPaid());
     }
 
     public String printTendered() {
+        System.out.println("---------------------------------");
+        System.out.println("Tendered: "+ getTendered());
         return Formats.CURRENCY.formatValue(getTendered());
     }
 
     public String printChange() {
+        System.out.println("---------------------------------");
+        System.out.println("Change: "+ getChange());
         return Formats.CURRENCY.formatValue(getChange());
     }
     
