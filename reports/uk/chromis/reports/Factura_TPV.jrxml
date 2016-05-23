@@ -1,6 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.2.1.final using JasperReports Library version 6.2.1  -->
-<!-- 2016-05-23T11:50:29 -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Blank_A4" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="1d2bc896-6bcc-4dd1-a34f-7e07c3c84dd7">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
 	<property name="com.jaspersoft.studio.unit." value="pixel"/>
@@ -12,6 +10,9 @@
 	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
 	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
 	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
 	<import value="java.util.concurrent.*"/>
 	<import value="net.sf.jasperreports.engine.analytics.*"/>
 	<import value="net.sf.jasperreports.engine.data.*"/>
@@ -29,59 +30,167 @@
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="164" splitType="Stretch">
+		<band height="257" splitType="Stretch">
+			<rectangle radius="10">
+				<reportElement mode="Opaque" x="272" y="0" width="283" height="182" backcolor="#EAEAEA" uuid="eafb97a0-eadd-4522-a9ea-840d70991bb1"/>
+			</rectangle>
+			<rectangle radius="10">
+				<reportElement mode="Opaque" x="1" y="192" width="255" height="64" backcolor="#EAEAEA" uuid="22d23e02-b66b-4962-b113-853dc8d52026"/>
+			</rectangle>
 			<image scaleImage="RetainShape">
-				<reportElement key="image-1" stretchType="RelativeToTallestObject" x="134" y="0" width="362" height="162" uuid="62b6a7ef-7d34-4430-bae1-5b1501e36e4c"/>
-				<imageExpression><![CDATA["reports/uk/chromis/reports/logo-florentino.png"]]></imageExpression>
+				<reportElement key="image-1" stretchType="RelativeToTallestObject" x="0" y="0" width="256" height="182" uuid="62b6a7ef-7d34-4430-bae1-5b1501e36e4c"/>
+				<imageExpression><![CDATA["reports/uk/chromis/reports/logo_florentino3.png"]]></imageExpression>
 			</image>
-			<rectangle radius="5">
-				<reportElement x="378" y="24" width="100" height="50" uuid="573c4879-2173-4451-841a-8df03ed35aa2"/>
-			</rectangle>
-		</band>
-	</title>
-	<pageHeader>
-		<band height="84" splitType="Stretch">
-			<rectangle>
-				<reportElement key="rectangle-2" x="312" y="7" width="215" height="77" uuid="e19895d0-cdf8-419a-8730-1e7fa56014cb"/>
-			</rectangle>
-			<rectangle>
-				<reportElement key="rectangle-1" x="10" y="7" width="302" height="77" uuid="82b49867-1174-4ce0-8ef9-a2f843cb9bc2"/>
+			<elementGroup>
+				<staticText>
+					<reportElement x="1" y="192" width="255" height="64" uuid="0791c234-c95f-4117-b9af-8219c02fc65a"/>
+					<textElement textAlignment="Center">
+						<font fontName="Gadugi" size="12" isBold="true"/>
+					</textElement>
+					<text><![CDATA[N.I.F. 70.160.445-A
+C/ San Roque S/N. 19420 
+Cifuentes (Guadalajara) 
+Teléfono 949 81 03 35]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="272" y="11" width="283" height="23" uuid="221662c2-8ec6-4b84-9424-f2c68a284a6a"/>
+					<textElement textAlignment="Center">
+						<font fontName="Gadugi" size="16" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Cliente:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="284" y="44" width="65" height="18" uuid="2b0c6b81-dc5d-4cc1-a326-5dfb32a2cba0"/>
+					<textElement textAlignment="Left">
+						<font fontName="Gadugi" size="12" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Nombre:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="284" y="62" width="65" height="18" uuid="a3db5110-48fa-4c65-b601-3190fc5d4253"/>
+					<textElement textAlignment="Left">
+						<font fontName="Gadugi" size="12" isBold="true"/>
+					</textElement>
+					<text><![CDATA[D.N.I.:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="284" y="80" width="65" height="18" uuid="b1e77376-256b-4ab8-a38b-2196fe232790"/>
+					<textElement textAlignment="Left">
+						<font fontName="Gadugi" size="12" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Dirección:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="284" y="113" width="65" height="18" uuid="35aff138-98cf-44bd-9cd3-fd0bbfda2214"/>
+					<textElement textAlignment="Left">
+						<font fontName="Gadugi" size="12" isBold="true"/>
+					</textElement>
+					<text><![CDATA[C.P.:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="284" y="131" width="65" height="18" uuid="3220fc3f-df76-4ece-8bd5-59d9d5a30338"/>
+					<textElement textAlignment="Left">
+						<font fontName="Gadugi" size="12" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Localidad:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="284" y="149" width="65" height="18" uuid="7203aa08-ce53-4fac-9f64-f2db8fee2a8f"/>
+					<textElement textAlignment="Left">
+						<font fontName="Gadugi" size="12" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Provincia:]]></text>
+				</staticText>
+			</elementGroup>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField-5" x="349" y="44" width="196" height="19" uuid="44006bbe-4f49-4165-aa40-80ca54604ea2">
+					<printWhenExpression><![CDATA[Boolean.valueOf($F{TICKET}.getCustomer() != null)]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font fontName="Gadugi" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{TICKET}.getCustomer().getName()]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField-5" x="349" y="63" width="196" height="19" uuid="23fb3ded-f40f-4542-b744-e18dc23dc285">
+					<printWhenExpression><![CDATA[Boolean.valueOf($F{TICKET}.getCustomer() != null)]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font fontName="Gadugi" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{TICKET}.getCustomer().getTaxid()]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField-5" x="349" y="82" width="196" height="31" uuid="a5553a81-7537-4fed-b9de-db1e4601a943">
+					<printWhenExpression><![CDATA[Boolean.valueOf($F{TICKET}.getCustomer() != null)]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font fontName="Gadugi" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{TICKET}.getCustomer().getAddress()]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField-5" x="349" y="113" width="196" height="19" uuid="a22e86c8-ac58-4849-bd62-7ea4849e2cfb">
+					<printWhenExpression><![CDATA[Boolean.valueOf($F{TICKET}.getCustomer() != null)]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font fontName="Gadugi" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{TICKET}.getCustomer().getPostal()]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField-5" x="349" y="130" width="196" height="19" uuid="4e98a239-60e7-4041-8466-164270b93b69">
+					<printWhenExpression><![CDATA[Boolean.valueOf($F{TICKET}.getCustomer() != null)]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font fontName="Gadugi" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{TICKET}.getCustomer().getCity()]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField-5" x="349" y="149" width="196" height="19" uuid="1fac0b80-716f-495c-9876-cdc84c5961a7">
+					<printWhenExpression><![CDATA[Boolean.valueOf($F{TICKET}.getCustomer() != null)]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font fontName="Gadugi" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{TICKET}.getCustomer().getRegion()]]></textFieldExpression>
+			</textField>
+			<rectangle radius="10">
+				<reportElement mode="Opaque" x="272" y="192" width="283" height="64" backcolor="#EAEAEA" uuid="770328ca-1b18-40c5-9d88-cffb191ce0d8"/>
 			</rectangle>
 			<textField isBlankWhenNull="false">
-				<reportElement key="textField-2" x="128" y="11" width="156" height="21" uuid="ff76af11-eba3-4994-a6fb-1d948351efe4"/>
+				<reportElement key="textField-2" x="393" y="203" width="156" height="21" uuid="ff76af11-eba3-4994-a6fb-1d948351efe4"/>
+				<textElement>
+					<font fontName="Gadugi" size="12"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{TICKET}.printId()]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement key="staticText-3" x="19" y="11" width="109" height="21" uuid="fac7c00b-f725-4713-8ef4-e585c1a58dc4"/>
+				<reportElement key="staticText-3" x="284" y="203" width="109" height="21" uuid="fac7c00b-f725-4713-8ef4-e585c1a58dc4"/>
 				<textElement>
-					<font isBold="true" pdfFontName="Helvetica-Bold"/>
+					<font fontName="Gadugi" size="12" isBold="true" pdfFontName="Helvetica-Bold"/>
 				</textElement>
 				<text><![CDATA[Factura Nº:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement key="staticText-4" x="19" y="32" width="109" height="21" uuid="dd53a30a-0007-4d9e-ab22-5d7ca6c178bb"/>
+				<reportElement key="staticText-4" x="284" y="224" width="109" height="21" uuid="dd53a30a-0007-4d9e-ab22-5d7ca6c178bb"/>
 				<textElement>
-					<font isBold="true" pdfFontName="Helvetica-Bold"/>
+					<font fontName="Gadugi" size="12" isBold="true" pdfFontName="Helvetica-Bold"/>
 				</textElement>
 				<text><![CDATA[Fecha:]]></text>
 			</staticText>
 			<textField isBlankWhenNull="false">
-				<reportElement key="textField-3" x="128" y="32" width="156" height="21" uuid="2bf476fe-cf47-4b23-a99b-f10160c925c8"/>
-				<textFieldExpression><![CDATA[$F{TICKET}.printDate()]]></textFieldExpression>
-			</textField>
-			<textField isBlankWhenNull="false">
-				<reportElement key="textField-4" x="324" y="11" width="188" height="19" uuid="a282c5aa-d859-46ac-86a8-22c642a9dcf0">
-					<printWhenExpression><![CDATA[Boolean.valueOf($F{TICKET}.getCustomer() != null)]]></printWhenExpression>
-				</reportElement>
-				<textFieldExpression><![CDATA[$F{TICKET}.getCustomer().getName()]]></textFieldExpression>
-			</textField>
-			<textField isBlankWhenNull="false">
-				<reportElement key="textField-5" x="324" y="32" width="188" height="19" uuid="23fb3ded-f40f-4542-b744-e18dc23dc285">
-					<printWhenExpression><![CDATA[Boolean.valueOf($F{TICKET}.getCustomer() != null)]]></printWhenExpression>
-				</reportElement>
-				<textFieldExpression><![CDATA[$F{TICKET}.getCustomer().getTaxid()]]></textFieldExpression>
+				<reportElement key="textField-3" x="393" y="224" width="156" height="21" uuid="2bf476fe-cf47-4b23-a99b-f10160c925c8"/>
+				<textElement>
+					<font fontName="Gadugi" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{TICKET}.printDate2()]]></textFieldExpression>
 			</textField>
 		</band>
+	</title>
+	<pageHeader>
+		<band height="6" splitType="Stretch"/>
 	</pageHeader>
 	<columnHeader>
 		<band splitType="Stretch"/>
