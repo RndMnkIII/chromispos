@@ -1,8 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.2.1.final using JasperReports Library version 6.2.1  -->
-<!-- 2016-05-12T10:44:30 -->
+<!-- 2016-05-23T11:50:29 -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Blank_A4" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="1d2bc896-6bcc-4dd1-a34f-7e07c3c84dd7">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
 	<import value="java.util.concurrent.*"/>
 	<import value="net.sf.jasperreports.engine.analytics.*"/>
 	<import value="net.sf.jasperreports.engine.data.*"/>
@@ -22,11 +31,12 @@
 	<title>
 		<band height="164" splitType="Stretch">
 			<image scaleImage="RetainShape">
-				<reportElement key="image-1" x="134" y="0" width="362" height="162" uuid="62b6a7ef-7d34-4430-bae1-5b1501e36e4c"/>
-				<box></box>
-					<graphicElement stretchType="RelativeToTallestObject"/>
-					<imageExpression class="java.lang.String"><![CDATA["reports/uk/chromis/reports/logo-florentino.png"]]></imageExpression>
+				<reportElement key="image-1" stretchType="RelativeToTallestObject" x="134" y="0" width="362" height="162" uuid="62b6a7ef-7d34-4430-bae1-5b1501e36e4c"/>
+				<imageExpression><![CDATA["reports/uk/chromis/reports/logo-florentino.png"]]></imageExpression>
 			</image>
+			<rectangle radius="5">
+				<reportElement x="378" y="24" width="100" height="50" uuid="573c4879-2173-4451-841a-8df03ed35aa2"/>
+			</rectangle>
 		</band>
 	</title>
 	<pageHeader>
@@ -59,7 +69,6 @@
 				<reportElement key="textField-3" x="128" y="32" width="156" height="21" uuid="2bf476fe-cf47-4b23-a99b-f10160c925c8"/>
 				<textFieldExpression><![CDATA[$F{TICKET}.printDate()]]></textFieldExpression>
 			</textField>
-
 			<textField isBlankWhenNull="false">
 				<reportElement key="textField-4" x="324" y="11" width="188" height="19" uuid="a282c5aa-d859-46ac-86a8-22c642a9dcf0">
 					<printWhenExpression><![CDATA[Boolean.valueOf($F{TICKET}.getCustomer() != null)]]></printWhenExpression>
