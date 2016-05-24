@@ -12,7 +12,7 @@
 	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="96"/>
 	<import value="java.util.concurrent.*"/>
 	<import value="net.sf.jasperreports.engine.analytics.*"/>
 	<import value="net.sf.jasperreports.engine.data.*"/>
@@ -198,7 +198,7 @@ Teléfono 949 81 03 35]]></text>
 	<detail>
 		<band height="85" splitType="Stretch">
 			<subreport isUsingCache="true">
-				<reportElement key="subreport-1" x="10" y="10" width="517" height="65" uuid="558cf368-164e-4cc9-8f77-a651cf2d0ad2"/>
+				<reportElement key="subreport-1" x="1" y="10" width="554" height="65" uuid="558cf368-164e-4cc9-8f77-a651cf2d0ad2"/>
 				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource(
 $F{TICKET}.getLines()
 )]]></dataSourceExpression>
@@ -211,7 +211,7 @@ net.sf.jasperreports.engine.xml.JRXmlLoader.load(getClass().getResourceAsStream(
 		</band>
 		<band height="92">
 			<subreport isUsingCache="true">
-				<reportElement key="subreport-1" x="10" y="15" width="517" height="65" uuid="76b681af-83fe-4eaa-a2b4-b76ae6d9767d"/>
+				<reportElement key="subreport-1" x="1" y="15" width="554" height="65" uuid="76b681af-83fe-4eaa-a2b4-b76ae6d9767d"/>
 				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource(
 $F{TICKET}.getTaxes()
 )]]></dataSourceExpression>
@@ -232,7 +232,7 @@ net.sf.jasperreports.engine.xml.JRXmlLoader.load(getClass().getResourceAsStream(
 	<lastPageFooter>
 		<band height="100">
 			<rectangle>
-				<reportElement key="rectangle-3" x="10" y="10" width="517" height="81" uuid="ea6dab0f-3d7e-433d-ba48-335751b112eb"/>
+				<reportElement key="rectangle-3" x="1" y="10" width="554" height="81" uuid="ea6dab0f-3d7e-433d-ba48-335751b112eb"/>
 			</rectangle>
 			<textField isBlankWhenNull="false">
 				<reportElement key="textField-6" x="324" y="40" width="188" height="19" uuid="e1a0aa6a-7e33-4a84-b0cd-e4d46328eb58"/>
