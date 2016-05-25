@@ -12,7 +12,7 @@
 	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="96"/>
+	<property name="ireport.y" value="0"/>
 	<import value="java.util.concurrent.*"/>
 	<import value="net.sf.jasperreports.engine.analytics.*"/>
 	<import value="net.sf.jasperreports.engine.data.*"/>
@@ -185,7 +185,7 @@ Teléfono 949 81 03 35]]></text>
 				<textElement>
 					<font fontName="Gadugi" size="12"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{TICKET}.printDate2()]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{TICKET}.printDate3()]]></textFieldExpression>
 			</textField>
 		</band>
 	</title>
