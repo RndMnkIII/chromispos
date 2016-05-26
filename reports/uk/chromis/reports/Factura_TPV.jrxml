@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.2.1.final using JasperReports Library version 6.2.1  -->
-<!-- 2016-05-25T19:59:53 -->
+<!-- 2016-05-26T11:43:25 -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Blank_A4" pageWidth="595" pageHeight="842" columnWidth="553" leftMargin="21" rightMargin="21" topMargin="28" bottomMargin="42" uuid="1d2bc896-6bcc-4dd1-a34f-7e07c3c84dd7">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
 	<property name="com.jaspersoft.studio.unit." value="pixel"/>
@@ -30,7 +30,7 @@
 	</field>
 	<pageHeader>
 		<band height="158" splitType="Stretch">
-			<rectangle radius="8">
+			<rectangle radius="4">
 				<reportElement mode="Opaque" x="263" y="0" width="291" height="130" backcolor="#EAEAEA" uuid="eafb97a0-eadd-4522-a9ea-840d70991bb1"/>
 			</rectangle>
 			<textField isBlankWhenNull="false">
@@ -88,7 +88,7 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$F{TICKET}.getCustomer().getRegion()]]></textFieldExpression>
 			</textField>
-			<rectangle radius="8">
+			<rectangle radius="4">
 				<reportElement mode="Opaque" x="1" y="137" width="553" height="20" backcolor="#EAEAEA" uuid="770328ca-1b18-40c5-9d88-cffb191ce0d8"/>
 			</rectangle>
 			<textField isBlankWhenNull="false">
@@ -99,7 +99,7 @@
 				<textFieldExpression><![CDATA[$F{TICKET}.printId()]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="false">
-				<reportElement key="textField-3" x="345" y="137" width="200" height="21" uuid="2bf476fe-cf47-4b23-a99b-f10160c925c8"/>
+				<reportElement key="textField-3" x="300" y="137" width="200" height="21" uuid="2bf476fe-cf47-4b23-a99b-f10160c925c8"/>
 				<textElement>
 					<font fontName="Gadugi" size="10"/>
 				</textElement>
@@ -134,8 +134,8 @@
 				<text><![CDATA[Nº Factura:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="272" y="137" width="65" height="20" uuid="2b0c6b81-dc5d-4cc1-a326-5dfb32a2cba0"/>
-				<textElement textAlignment="Right">
+				<reportElement x="263" y="137" width="39" height="20" uuid="2b0c6b81-dc5d-4cc1-a326-5dfb32a2cba0"/>
+				<textElement textAlignment="Left">
 					<font fontName="Gadugi" size="10" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Fecha:]]></text>
@@ -252,8 +252,8 @@ net.sf.jasperreports.engine.xml.JRXmlLoader.load(getClass().getResourceAsStream(
 	</pageFooter>
 	<lastPageFooter>
 		<band height="111">
-			<rectangle radius="8">
-				<reportElement mode="Opaque" x="263" y="2" width="292" height="53" backcolor="#EAEAEA" uuid="59614174-34b4-4990-974b-236ed5c44cdd"/>
+			<rectangle radius="4">
+				<reportElement mode="Opaque" x="263" y="2" width="291" height="53" backcolor="#EAEAEA" uuid="59614174-34b4-4990-974b-236ed5c44cdd"/>
 			</rectangle>
 			<staticText>
 				<reportElement x="268" y="18" width="99" height="16" uuid="4a1444f2-f12f-4389-9960-99c5b7f0f476">
