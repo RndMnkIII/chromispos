@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Blank_A4" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="1d2bc896-6bcc-4dd1-a34f-7e07c3c84dd7">
+<!-- Created with Jaspersoft Studio version 6.2.1.final using JasperReports Library version 6.2.1  -->
+<!-- 2016-05-25T19:59:53 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Blank_A4" pageWidth="595" pageHeight="842" columnWidth="553" leftMargin="21" rightMargin="21" topMargin="28" bottomMargin="42" uuid="1d2bc896-6bcc-4dd1-a34f-7e07c3c84dd7">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
 	<property name="com.jaspersoft.studio.unit." value="pixel"/>
 	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
@@ -26,179 +28,185 @@
 	<field name="TAXES_LOGIC" class="java.lang.Object">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
-	<background>
-		<band splitType="Stretch"/>
-	</background>
-	<title>
-		<band height="257" splitType="Stretch">
-			<rectangle radius="10">
-				<reportElement mode="Opaque" x="272" y="0" width="283" height="182" backcolor="#EAEAEA" uuid="eafb97a0-eadd-4522-a9ea-840d70991bb1"/>
+	<pageHeader>
+		<band height="158" splitType="Stretch">
+			<rectangle radius="8">
+				<reportElement mode="Opaque" x="263" y="0" width="291" height="130" backcolor="#EAEAEA" uuid="eafb97a0-eadd-4522-a9ea-840d70991bb1"/>
 			</rectangle>
-			<rectangle radius="10">
-				<reportElement mode="Opaque" x="1" y="192" width="255" height="64" backcolor="#EAEAEA" uuid="22d23e02-b66b-4962-b113-853dc8d52026"/>
-			</rectangle>
-			<image scaleImage="RetainShape">
-				<reportElement key="image-1" stretchType="RelativeToTallestObject" x="0" y="0" width="256" height="182" uuid="62b6a7ef-7d34-4430-bae1-5b1501e36e4c"/>
-				<imageExpression><![CDATA["reports/uk/chromis/reports/logo_florentino3.png"]]></imageExpression>
-			</image>
-			<elementGroup>
-				<staticText>
-					<reportElement x="1" y="192" width="255" height="64" uuid="0791c234-c95f-4117-b9af-8219c02fc65a"/>
-					<textElement textAlignment="Center">
-						<font fontName="Gadugi" size="12" isBold="true"/>
-					</textElement>
-					<text><![CDATA[N.I.F. 70.160.445-A
-C/ San Roque S/N. 19420 
-Cifuentes (Guadalajara) 
-Teléfono 949 81 03 35]]></text>
-				</staticText>
-				<staticText>
-					<reportElement x="272" y="11" width="283" height="23" uuid="221662c2-8ec6-4b84-9424-f2c68a284a6a"/>
-					<textElement textAlignment="Center">
-						<font fontName="Gadugi" size="16" isBold="true"/>
-					</textElement>
-					<text><![CDATA[Cliente:]]></text>
-				</staticText>
-				<staticText>
-					<reportElement x="284" y="44" width="65" height="18" uuid="2b0c6b81-dc5d-4cc1-a326-5dfb32a2cba0"/>
-					<textElement textAlignment="Left">
-						<font fontName="Gadugi" size="12" isBold="true"/>
-					</textElement>
-					<text><![CDATA[Nombre:]]></text>
-				</staticText>
-				<staticText>
-					<reportElement x="284" y="62" width="65" height="18" uuid="a3db5110-48fa-4c65-b601-3190fc5d4253"/>
-					<textElement textAlignment="Left">
-						<font fontName="Gadugi" size="12" isBold="true"/>
-					</textElement>
-					<text><![CDATA[D.N.I.:]]></text>
-				</staticText>
-				<staticText>
-					<reportElement x="284" y="80" width="65" height="18" uuid="b1e77376-256b-4ab8-a38b-2196fe232790"/>
-					<textElement textAlignment="Left">
-						<font fontName="Gadugi" size="12" isBold="true"/>
-					</textElement>
-					<text><![CDATA[Dirección:]]></text>
-				</staticText>
-				<staticText>
-					<reportElement x="284" y="113" width="65" height="18" uuid="35aff138-98cf-44bd-9cd3-fd0bbfda2214"/>
-					<textElement textAlignment="Left">
-						<font fontName="Gadugi" size="12" isBold="true"/>
-					</textElement>
-					<text><![CDATA[C.P.:]]></text>
-				</staticText>
-				<staticText>
-					<reportElement x="284" y="131" width="65" height="18" uuid="3220fc3f-df76-4ece-8bd5-59d9d5a30338"/>
-					<textElement textAlignment="Left">
-						<font fontName="Gadugi" size="12" isBold="true"/>
-					</textElement>
-					<text><![CDATA[Localidad:]]></text>
-				</staticText>
-				<staticText>
-					<reportElement x="284" y="149" width="65" height="18" uuid="7203aa08-ce53-4fac-9f64-f2db8fee2a8f"/>
-					<textElement textAlignment="Left">
-						<font fontName="Gadugi" size="12" isBold="true"/>
-					</textElement>
-					<text><![CDATA[Provincia:]]></text>
-				</staticText>
-			</elementGroup>
 			<textField isBlankWhenNull="false">
-				<reportElement key="textField-5" x="349" y="44" width="196" height="19" uuid="44006bbe-4f49-4165-aa40-80ca54604ea2">
+				<reportElement key="textField-5" x="333" y="30" width="212" height="14" uuid="44006bbe-4f49-4165-aa40-80ca54604ea2">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 					<printWhenExpression><![CDATA[Boolean.valueOf($F{TICKET}.getCustomer() != null)]]></printWhenExpression>
 				</reportElement>
 				<textElement>
-					<font fontName="Gadugi" size="12"/>
+					<font fontName="Gadugi" size="10"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{TICKET}.getCustomer().getName()]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="false">
-				<reportElement key="textField-5" x="349" y="63" width="196" height="19" uuid="23fb3ded-f40f-4542-b744-e18dc23dc285">
+				<reportElement key="textField-5" x="333" y="44" width="212" height="14" uuid="23fb3ded-f40f-4542-b744-e18dc23dc285">
 					<printWhenExpression><![CDATA[Boolean.valueOf($F{TICKET}.getCustomer() != null)]]></printWhenExpression>
 				</reportElement>
 				<textElement>
-					<font fontName="Gadugi" size="12"/>
+					<font fontName="Gadugi" size="10"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{TICKET}.getCustomer().getTaxid()]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="false">
-				<reportElement key="textField-5" x="349" y="82" width="196" height="31" uuid="a5553a81-7537-4fed-b9de-db1e4601a943">
+				<reportElement key="textField-5" x="333" y="58" width="212" height="28" uuid="a5553a81-7537-4fed-b9de-db1e4601a943">
 					<printWhenExpression><![CDATA[Boolean.valueOf($F{TICKET}.getCustomer() != null)]]></printWhenExpression>
 				</reportElement>
 				<textElement>
-					<font fontName="Gadugi" size="12"/>
+					<font fontName="Gadugi" size="10"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{TICKET}.getCustomer().getAddress()]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="false">
-				<reportElement key="textField-5" x="349" y="113" width="196" height="19" uuid="a22e86c8-ac58-4849-bd62-7ea4849e2cfb">
+				<reportElement key="textField-5" x="333" y="86" width="212" height="14" uuid="a22e86c8-ac58-4849-bd62-7ea4849e2cfb">
 					<printWhenExpression><![CDATA[Boolean.valueOf($F{TICKET}.getCustomer() != null)]]></printWhenExpression>
 				</reportElement>
 				<textElement>
-					<font fontName="Gadugi" size="12"/>
+					<font fontName="Gadugi" size="10"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{TICKET}.getCustomer().getPostal()]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="false">
-				<reportElement key="textField-5" x="349" y="130" width="196" height="19" uuid="4e98a239-60e7-4041-8466-164270b93b69">
+				<reportElement key="textField-5" x="333" y="100" width="212" height="14" uuid="4e98a239-60e7-4041-8466-164270b93b69">
 					<printWhenExpression><![CDATA[Boolean.valueOf($F{TICKET}.getCustomer() != null)]]></printWhenExpression>
 				</reportElement>
 				<textElement>
-					<font fontName="Gadugi" size="12"/>
+					<font fontName="Gadugi" size="10"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{TICKET}.getCustomer().getCity()]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="false">
-				<reportElement key="textField-5" x="349" y="149" width="196" height="19" uuid="1fac0b80-716f-495c-9876-cdc84c5961a7">
+				<reportElement key="textField-5" x="333" y="114" width="212" height="14" uuid="1fac0b80-716f-495c-9876-cdc84c5961a7">
 					<printWhenExpression><![CDATA[Boolean.valueOf($F{TICKET}.getCustomer() != null)]]></printWhenExpression>
 				</reportElement>
 				<textElement>
-					<font fontName="Gadugi" size="12"/>
+					<font fontName="Gadugi" size="10"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{TICKET}.getCustomer().getRegion()]]></textFieldExpression>
 			</textField>
-			<rectangle radius="10">
-				<reportElement mode="Opaque" x="272" y="192" width="283" height="64" backcolor="#EAEAEA" uuid="770328ca-1b18-40c5-9d88-cffb191ce0d8"/>
+			<rectangle radius="8">
+				<reportElement mode="Opaque" x="1" y="137" width="553" height="20" backcolor="#EAEAEA" uuid="770328ca-1b18-40c5-9d88-cffb191ce0d8"/>
 			</rectangle>
 			<textField isBlankWhenNull="false">
-				<reportElement key="textField-2" x="393" y="203" width="156" height="21" uuid="ff76af11-eba3-4994-a6fb-1d948351efe4"/>
+				<reportElement key="textField-2" x="78" y="137" width="174" height="20" uuid="ff76af11-eba3-4994-a6fb-1d948351efe4"/>
 				<textElement>
-					<font fontName="Gadugi" size="12"/>
+					<font fontName="Gadugi" size="10"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{TICKET}.printId()]]></textFieldExpression>
 			</textField>
-			<staticText>
-				<reportElement key="staticText-3" x="284" y="203" width="109" height="21" uuid="fac7c00b-f725-4713-8ef4-e585c1a58dc4"/>
-				<textElement>
-					<font fontName="Gadugi" size="12" isBold="true" pdfFontName="Helvetica-Bold"/>
-				</textElement>
-				<text><![CDATA[Factura Nº:]]></text>
-			</staticText>
-			<staticText>
-				<reportElement key="staticText-4" x="284" y="224" width="109" height="21" uuid="dd53a30a-0007-4d9e-ab22-5d7ca6c178bb"/>
-				<textElement>
-					<font fontName="Gadugi" size="12" isBold="true" pdfFontName="Helvetica-Bold"/>
-				</textElement>
-				<text><![CDATA[Fecha:]]></text>
-			</staticText>
 			<textField isBlankWhenNull="false">
-				<reportElement key="textField-3" x="393" y="224" width="156" height="21" uuid="2bf476fe-cf47-4b23-a99b-f10160c925c8"/>
+				<reportElement key="textField-3" x="345" y="137" width="200" height="21" uuid="2bf476fe-cf47-4b23-a99b-f10160c925c8"/>
 				<textElement>
-					<font fontName="Gadugi" size="12"/>
+					<font fontName="Gadugi" size="10"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{TICKET}.printDate3()]]></textFieldExpression>
 			</textField>
+			<staticText>
+				<reportElement x="268" y="86" width="65" height="14" uuid="35aff138-98cf-44bd-9cd3-fd0bbfda2214"/>
+				<textElement textAlignment="Left">
+					<font fontName="Gadugi" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[C.P.:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="268" y="100" width="65" height="14" uuid="3220fc3f-df76-4ece-8bd5-59d9d5a30338"/>
+				<textElement textAlignment="Left">
+					<font fontName="Gadugi" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Localidad:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="268" y="114" width="65" height="14" uuid="7203aa08-ce53-4fac-9f64-f2db8fee2a8f"/>
+				<textElement textAlignment="Left">
+					<font fontName="Gadugi" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Provincia:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="8" y="137" width="64" height="20" uuid="c2e542b9-cfbe-4071-8749-4f2b13454b65"/>
+				<textElement textAlignment="Right">
+					<font fontName="Gadugi" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nº Factura:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="272" y="137" width="65" height="20" uuid="2b0c6b81-dc5d-4cc1-a326-5dfb32a2cba0"/>
+				<textElement textAlignment="Right">
+					<font fontName="Gadugi" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="268" y="58" width="65" height="14" uuid="b1e77376-256b-4ab8-a38b-2196fe232790">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Left">
+					<font fontName="Gadugi" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Dirección:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="268" y="44" width="65" height="14" uuid="a3db5110-48fa-4c65-b601-3190fc5d4253">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Left">
+					<font fontName="Gadugi" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[D.N.I.:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="268" y="30" width="65" height="14" uuid="1bdeb111-f1fc-4e6c-ab32-c5d7d336fde7"/>
+				<textElement textAlignment="Left">
+					<font fontName="Gadugi" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nombre:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="0" width="253" height="24" uuid="b634f841-2c0e-41d1-a8c6-344d49dcf2a7"/>
+				<textElement textAlignment="Center">
+					<font fontName="Gadugi" size="16" isBold="true"/>
+					<paragraph lineSpacing="Fixed" lineSpacingSize="0.0"/>
+				</textElement>
+				<text><![CDATA[FLORENTINO MORENO GARCÍA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="24" width="253" height="64" uuid="0791c234-c95f-4117-b9af-8219c02fc65a"/>
+				<textElement textAlignment="Center">
+					<font fontName="Gadugi" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[N.I.F. 70.160.445-A
+C/ San Roque S/N. 19420 
+Cifuentes (Guadalajara) 
+Teléfono 949 81 03 35]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="268" y="3" width="251" height="19" uuid="221662c2-8ec6-4b84-9424-f2c68a284a6a"/>
+				<box leftPadding="2" rightPadding="2"/>
+				<textElement textAlignment="Left">
+					<font fontName="Gadugi" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cliente:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="88" width="253" height="42" uuid="fb11047e-c99b-48f9-8314-1b21baf65a59"/>
+				<textElement textAlignment="Center">
+					<font fontName="Gadugi" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fontanería - Calefacción - Aire Acondicionado  Energía Solar - Biomasa - Electricidad - Muebles de Cocina y Hogar - Electrodomésticos]]></text>
+			</staticText>
 		</band>
-	</title>
-	<pageHeader>
-		<band height="6" splitType="Stretch"/>
 	</pageHeader>
 	<columnHeader>
 		<band splitType="Stretch"/>
 	</columnHeader>
 	<detail>
-		<band height="85" splitType="Stretch">
+		<band height="77" splitType="Stretch">
 			<subreport isUsingCache="true">
-				<reportElement key="subreport-1" x="1" y="10" width="554" height="65" uuid="558cf368-164e-4cc9-8f77-a651cf2d0ad2"/>
+				<reportElement key="subreport-1" x="1" y="10" width="553" height="65" uuid="558cf368-164e-4cc9-8f77-a651cf2d0ad2"/>
 				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource(
 $F{TICKET}.getLines()
 )]]></dataSourceExpression>
@@ -209,9 +217,9 @@ net.sf.jasperreports.engine.xml.JRXmlLoader.load(getClass().getResourceAsStream(
 )]]></subreportExpression>
 			</subreport>
 		</band>
-		<band height="92">
+		<band height="66">
 			<subreport isUsingCache="true">
-				<reportElement key="subreport-1" x="1" y="15" width="554" height="65" uuid="76b681af-83fe-4eaa-a2b4-b76ae6d9767d"/>
+				<reportElement key="subreport-1" x="312" y="0" width="239" height="65" uuid="76b681af-83fe-4eaa-a2b4-b76ae6d9767d"/>
 				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource(
 $F{TICKET}.getTaxes()
 )]]></dataSourceExpression>
@@ -227,58 +235,102 @@ net.sf.jasperreports.engine.xml.JRXmlLoader.load(getClass().getResourceAsStream(
 		<band splitType="Stretch"/>
 	</columnFooter>
 	<pageFooter>
-		<band splitType="Stretch"/>
+		<band height="19" splitType="Stretch">
+			<textField>
+				<reportElement x="206" y="0" width="66" height="15" uuid="e37bde29-058e-4dbb-92b6-854bbb8edd4c"/>
+				<textElement textAlignment="Right">
+					<font fontName="Gadugi"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Página " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="272" y="0" width="39" height="15" uuid="ac0d98b1-19dd-4ba6-b227-3a763fa75642"/>
+				<textElement textAlignment="Left"/>
+				<textFieldExpression><![CDATA[" / " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
 	</pageFooter>
 	<lastPageFooter>
-		<band height="100">
-			<rectangle>
-				<reportElement key="rectangle-3" x="1" y="10" width="554" height="81" uuid="ea6dab0f-3d7e-433d-ba48-335751b112eb"/>
+		<band height="111">
+			<rectangle radius="8">
+				<reportElement mode="Opaque" x="263" y="2" width="292" height="53" backcolor="#EAEAEA" uuid="59614174-34b4-4990-974b-236ed5c44cdd"/>
 			</rectangle>
+			<staticText>
+				<reportElement x="268" y="18" width="99" height="16" uuid="4a1444f2-f12f-4389-9960-99c5b7f0f476">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Left">
+					<font fontName="Gadugi" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total impuestos:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="268" y="2" width="99" height="16" uuid="2c8a1081-b396-4272-af64-04dab7382853">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Left">
+					<font fontName="Gadugi" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Base total:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="268" y="34" width="99" height="16" uuid="5476a49e-3925-4134-88d3-80400934761c">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Left">
+					<font fontName="Gadugi" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total Factura:]]></text>
+			</staticText>
 			<textField isBlankWhenNull="false">
-				<reportElement key="textField-6" x="324" y="40" width="188" height="19" uuid="e1a0aa6a-7e33-4a84-b0cd-e4d46328eb58"/>
+				<reportElement key="textField-5" isPrintRepeatedValues="false" x="368" y="2" width="175" height="16" uuid="edbfa794-a8cf-41bf-b1ee-f569f02aa7e2">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					<printWhenExpression><![CDATA[Boolean.valueOf($F{TICKET}.printSubTotal() != null)]]></printWhenExpression>
+				</reportElement>
 				<textElement textAlignment="Right">
-					<font size="12" isBold="true" pdfFontName="Helvetica-Bold"/>
+					<font fontName="Gadugi" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{TICKET}.printSubTotal()]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField-5" x="368" y="18" width="175" height="16" uuid="0a14758a-7833-4312-a747-cfdafc6497f0">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					<printWhenExpression><![CDATA[Boolean.valueOf($F{TICKET}.printTax() != null)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font fontName="Gadugi" size="12" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{TICKET}.printTax()]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="false">
-				<reportElement key="textField-7" x="324" y="59" width="188" height="19" uuid="43a26444-784b-4f24-bb8c-a5ab5586a56c"/>
+				<reportElement key="textField-5" x="368" y="34" width="175" height="16" uuid="e3fcb5a9-287e-4080-afa1-4cbdbddadce4">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					<printWhenExpression><![CDATA[Boolean.valueOf($F{TICKET}.printTotal() != null)]]></printWhenExpression>
+				</reportElement>
 				<textElement textAlignment="Right">
-					<font size="12" isBold="true" pdfFontName="Helvetica-Bold"/>
+					<font fontName="Gadugi" size="12" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{TICKET}.printTotal()]]></textFieldExpression>
 			</textField>
-			<textField isBlankWhenNull="false">
-				<reportElement key="textField-8" x="324" y="21" width="188" height="19" uuid="886bd2a4-2f9a-4301-9767-94ec3907642b"/>
+			<textField evaluationTime="Report">
+				<reportElement x="263" y="96" width="39" height="15" uuid="dbb62206-9f02-4d6b-af19-7e4745a7f887"/>
+				<textElement textAlignment="Left"/>
+				<textFieldExpression><![CDATA[" / " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="197" y="96" width="66" height="15" uuid="60e55a80-0195-4dcf-b5c7-074aad8bbe6e"/>
 				<textElement textAlignment="Right">
-					<font size="12" isBold="true" pdfFontName="Helvetica-Bold"/>
+					<font fontName="Gadugi"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{TICKET}.printSubTotal()]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Página " + $V{PAGE_NUMBER}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement key="staticText-6" x="164" y="21" width="160" height="19" uuid="9df43162-5fa9-461c-bc47-c8d484128381"/>
-				<textElement>
-					<font isBold="true" pdfFontName="Helvetica-Bold"/>
+				<reportElement x="1" y="64" width="551" height="32" uuid="93559c3a-21c2-4e42-8a1c-a623743cc1c6"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Gadugi" size="7" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Subtotal]]></text>
-			</staticText>
-			<staticText>
-				<reportElement key="staticText-8" x="164" y="40" width="160" height="19" uuid="3330dbf5-bc1a-4f04-ab77-250d6c1560ee"/>
-				<textElement>
-					<font isBold="true" pdfFontName="Helvetica-Bold"/>
-				</textElement>
-				<text><![CDATA[Impuestos]]></text>
-			</staticText>
-			<staticText>
-				<reportElement key="staticText-9" x="164" y="59" width="160" height="19" uuid="e3d9b503-7a06-4c23-90ae-66af2760dacd"/>
-				<textElement>
-					<font isBold="true" pdfFontName="Helvetica-Bold"/>
-				</textElement>
-				<text><![CDATA[Total]]></text>
+				<text><![CDATA[De conformidad con la Ley Orgánica 15/1999, le informamos que sus datos se hallan incorporados a un fichero titularidad de FLORENTINO MORENO GARCÍA, con la finalidad de cumplir con  nuestra relación comercial. Igualmente le informamos que podrá ejercer los derechos de acceso, rectificación, cancelación y oposición establecidos en dicha Ley a través de la siguiente dirección: FLORENTINO MORENO GARCÍA, C/ San Roque S/N - 19420 Cifuentes (Guadalajara)]]></text>
 			</staticText>
 		</band>
 	</lastPageFooter>
-	<summary>
-		<band height="19" splitType="Stretch"/>
-	</summary>
 </jasperReport>
