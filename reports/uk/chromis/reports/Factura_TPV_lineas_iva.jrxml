@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.2.1.final using JasperReports Library version 6.2.1  -->
-<!-- 2016-05-25T20:01:30 -->
+<!-- 2016-05-27T09:45:20 -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Factura_TPV_lineas_iva" pageWidth="283" pageHeight="141" whenNoDataType="NoDataSection" columnWidth="241" leftMargin="0" rightMargin="42" topMargin="0" bottomMargin="0" uuid="c7066a59-0cf7-4a1a-8eb1-f75ef6679291">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
 	<property name="com.jaspersoft.studio.unit." value="mm"/>
@@ -30,7 +30,7 @@
 				<text><![CDATA[IVA]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="90" y="0" width="71" height="19" uuid="51e3b0d2-e160-4476-9070-9bb07ff7447c">
+				<reportElement x="84" y="0" width="84" height="19" uuid="51e3b0d2-e160-4476-9070-9bb07ff7447c">
 					<property name="com.jaspersoft.studio.unit.width" value="mm"/>
 				</reportElement>
 				<box>
@@ -45,7 +45,7 @@
 				<text><![CDATA[Base imponible]]></text>
 			</staticText>
 			<staticText>
-				<reportElement key="" x="170" y="0" width="70" height="19" uuid="48c07f23-33bb-434d-a2c0-87c6140b49cf">
+				<reportElement key="" x="172" y="0" width="68" height="19" uuid="48c07f23-33bb-434d-a2c0-87c6140b49cf">
 					<property name="com.jaspersoft.studio.unit.width" value="mm"/>
 				</reportElement>
 				<box>
@@ -68,7 +68,7 @@
 		<band height="18" splitType="Stretch">
 			<property name="com.jaspersoft.studio.unit.height" value="mm"/>
 			<rectangle>
-				<reportElement x="0" y="0" width="242" height="18" backcolor="#D4D4D4" uuid="47a63800-2218-4414-92fc-9aaf7cc5b577">
+				<reportElement x="10" y="0" width="230" height="18" backcolor="#D4D4D4" uuid="47a63800-2218-4414-92fc-9aaf7cc5b577">
 					<printWhenExpression><![CDATA[$V{REPORT_COUNT}%2==1]]></printWhenExpression>
 				</reportElement>
 				<graphicElement>
@@ -91,7 +91,7 @@
 				<textFieldExpression><![CDATA[$F{_THIS}.getTaxInfo()]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="false">
-				<reportElement key="textField-3" mode="Transparent" x="90" y="0" width="71" height="18" backcolor="#F7F7F7" uuid="84dc8d4e-a874-44a4-82c1-d7a448b8e1c7">
+				<reportElement key="textField-3" mode="Transparent" x="84" y="0" width="84" height="18" backcolor="#F7F7F7" uuid="84dc8d4e-a874-44a4-82c1-d7a448b8e1c7">
 					<property name="com.jaspersoft.studio.unit.width" value="mm"/>
 					<property name="com.jaspersoft.studio.unit.height" value="mm"/>
 				</reportElement>
@@ -107,7 +107,7 @@
 				<textFieldExpression><![CDATA[$F{_THIS}.printSubTotal()]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="false">
-				<reportElement key="textField-2" mode="Transparent" x="170" y="0" width="72" height="18" backcolor="#F7F7F7" uuid="c549123c-28cd-46a6-bf20-27fda225e8c0">
+				<reportElement key="textField-2" mode="Transparent" x="172" y="0" width="68" height="18" backcolor="#F7F7F7" uuid="c549123c-28cd-46a6-bf20-27fda225e8c0">
 					<property name="com.jaspersoft.studio.unit.height" value="mm"/>
 				</reportElement>
 				<box>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.2.1.final using JasperReports Library version 6.2.1  -->
-<!-- 2016-05-25T19:00:24 -->
+<!-- 2016-05-27T09:42:52 -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Factura_TPV_lineas_articulo" pageWidth="595" pageHeight="842" columnWidth="553" leftMargin="0" rightMargin="42" topMargin="0" bottomMargin="0" uuid="cea266f7-a1f6-44ac-8a57-d88956cc9998">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
 	<property name="ireport.zoom" value="1.0"/>
@@ -37,7 +37,7 @@
 				<text><![CDATA[Concepto]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="344" y="0" width="71" height="19" uuid="37e2e4b7-5a1c-4021-bb80-881785a7fe6c">
+				<reportElement x="339" y="0" width="76" height="19" uuid="37e2e4b7-5a1c-4021-bb80-881785a7fe6c">
 					<property name="com.jaspersoft.studio.unit.width" value="mm"/>
 				</reportElement>
 				<box>
@@ -52,7 +52,7 @@
 				<text><![CDATA[Precio]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="423" y="0" width="48" height="19" uuid="a1c8db13-c94a-4c12-9e12-15b1b6576a8c">
+				<reportElement x="419" y="0" width="52" height="19" uuid="a1c8db13-c94a-4c12-9e12-15b1b6576a8c">
 					<property name="com.jaspersoft.studio.unit.width" value="mm"/>
 				</reportElement>
 				<box>
@@ -67,7 +67,7 @@
 				<text><![CDATA[Cantidad]]></text>
 			</staticText>
 			<staticText>
-				<reportElement key="" x="480" y="0" width="70" height="19" uuid="a40fa560-88b2-4b8b-9a8b-9b462daf05c2">
+				<reportElement key="" x="475" y="0" width="74" height="19" uuid="a40fa560-88b2-4b8b-9a8b-9b462daf05c2">
 					<property name="com.jaspersoft.studio.unit.width" value="mm"/>
 				</reportElement>
 				<box>
@@ -89,15 +89,15 @@
 	<detail>
 		<band height="19" splitType="Stretch">
 			<rectangle>
-				<reportElement x="0" y="0" width="551" height="18" backcolor="#D4D4D4" uuid="b997d25c-7840-4d9f-a1d1-2e5728880166">
+				<reportElement x="0" y="0" width="549" height="18" backcolor="#D4D4D4" uuid="b997d25c-7840-4d9f-a1d1-2e5728880166">
 					<printWhenExpression><![CDATA[$V{REPORT_COUNT}%2==0]]></printWhenExpression>
 				</reportElement>
 				<graphicElement>
 					<pen lineWidth="0.0"/>
 				</graphicElement>
 			</rectangle>
-			<textField isBlankWhenNull="false">
-				<reportElement key="textField-1" mode="Transparent" x="0" y="0" width="334" height="18" backcolor="#F7F7F7" uuid="4b7d4e84-0144-4fb8-8a36-2ee9516704b1">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement key="textField-1" mode="Transparent" x="0" y="0" width="335" height="18" backcolor="#F7F7F7" uuid="4b7d4e84-0144-4fb8-8a36-2ee9516704b1">
 					<property name="com.jaspersoft.studio.unit.width" value="mm"/>
 				</reportElement>
 				<box>
@@ -106,13 +106,13 @@
 					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
-				<textElement>
+				<textElement textAlignment="Justified">
 					<font fontName="Gadugi" size="11" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{productName}]]></textFieldExpression>
 			</textField>
-			<textField isBlankWhenNull="false">
-				<reportElement key="textField-3" mode="Transparent" x="344" y="0" width="71" height="18" backcolor="#F7F7F7" uuid="49bf00d7-5a1b-46d2-99ca-25b8ef53add7">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement key="textField-3" mode="Transparent" x="339" y="0" width="76" height="18" backcolor="#F7F7F7" uuid="49bf00d7-5a1b-46d2-99ca-25b8ef53add7">
 					<property name="com.jaspersoft.studio.unit.width" value="mm"/>
 					<property name="com.jaspersoft.studio.unit.height" value="mm"/>
 				</reportElement>
@@ -127,8 +127,8 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$F{_THIS}.printPrice()]]></textFieldExpression>
 			</textField>
-			<textField isBlankWhenNull="false">
-				<reportElement key="textField-4" mode="Transparent" x="420" y="0" width="51" height="18" backcolor="#F7F7F7" uuid="0de2703c-eee5-4287-89ae-78f4bb5e64a8"/>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement key="textField-4" mode="Transparent" x="419" y="0" width="52" height="18" backcolor="#F7F7F7" uuid="0de2703c-eee5-4287-89ae-78f4bb5e64a8"/>
 				<box>
 					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
@@ -140,8 +140,8 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$F{_THIS}.printMultiply()]]></textFieldExpression>
 			</textField>
-			<textField isBlankWhenNull="false">
-				<reportElement key="textField-2" mode="Transparent" x="480" y="0" width="72" height="18" backcolor="#F7F7F7" uuid="95194866-af85-4331-ab87-d187ff75044f">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement key="textField-2" mode="Transparent" x="475" y="0" width="74" height="18" backcolor="#F7F7F7" uuid="95194866-af85-4331-ab87-d187ff75044f">
 					<property name="com.jaspersoft.studio.unit.height" value="mm"/>
 				</reportElement>
 				<box>
