@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.2.1.final using JasperReports Library version 6.2.1  -->
-<!-- 2016-05-27T09:34:51 -->
+<!-- 2016-05-27T18:12:09 -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Blank_A4" pageWidth="595" pageHeight="842" columnWidth="553" leftMargin="21" rightMargin="21" topMargin="28" bottomMargin="42" uuid="1d2bc896-6bcc-4dd1-a34f-7e07c3c84dd7">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
 	<property name="com.jaspersoft.studio.unit." value="pixel"/>
@@ -92,7 +92,7 @@
 				<reportElement mode="Opaque" x="1" y="137" width="553" height="20" backcolor="#EAEAEA" uuid="770328ca-1b18-40c5-9d88-cffb191ce0d8"/>
 			</rectangle>
 			<textField isBlankWhenNull="false">
-				<reportElement key="textField-2" x="78" y="137" width="174" height="20" uuid="ff76af11-eba3-4994-a6fb-1d948351efe4"/>
+				<reportElement key="textField-2" x="104" y="137" width="151" height="20" uuid="ff76af11-eba3-4994-a6fb-1d948351efe4"/>
 				<textElement>
 					<font fontName="Gadugi" size="10"/>
 				</textElement>
@@ -127,11 +127,11 @@
 				<text><![CDATA[Provincia:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="8" y="137" width="64" height="20" uuid="c2e542b9-cfbe-4071-8749-4f2b13454b65"/>
-				<textElement textAlignment="Right">
+				<reportElement x="8" y="137" width="96" height="20" uuid="c2e542b9-cfbe-4071-8749-4f2b13454b65"/>
+				<textElement textAlignment="Left">
 					<font fontName="Gadugi" size="10" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Nº Factura:]]></text>
+				<text><![CDATA[Nº Factura Tienda:]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="263" y="137" width="39" height="20" uuid="2b0c6b81-dc5d-4cc1-a326-5dfb32a2cba0"/>
@@ -198,6 +198,15 @@ Teléfono 949 81 03 35]]></text>
 				</textElement>
 				<text><![CDATA[Fontanería - Calefacción - Aire Acondicionado  Energía Solar - Biomasa - Electricidad - Muebles de Cocina y Hogar - Electrodomésticos]]></text>
 			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement key="textField-5" x="333" y="59" width="212" height="14" uuid="7260db7a-1577-4ee4-aadb-a924fd408402">
+					<printWhenExpression><![CDATA[Boolean.valueOf($F{TICKET}.getCustomer() != null)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Justified">
+					<font fontName="Gadugi" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{TICKET}.getCustomer().getAddress2()]]></textFieldExpression>
+			</textField>
 		</band>
 	</pageHeader>
 	<columnHeader>
