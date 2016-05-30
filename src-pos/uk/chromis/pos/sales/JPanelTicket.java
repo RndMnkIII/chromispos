@@ -1583,9 +1583,10 @@ public abstract class JPanelTicket extends JPanel implements JPanelView, BeanFac
 
                             try {
                                 //START of modifications by RNDMNKIII
-                                ticket.setProperty("tipo", "factura");
+                                //si hay asignado cliente se toma como factura simplificada
+                                if (ticket.getCustomer() != null) ticket.setProperty("tipo", "factura"); 
                                 //END of modifications by RNDMNKIII
-                                dlSales.saveTicket(ticket, m_App.getInventoryLocation());
+                                dlSales.saveTicket(ticket, m_App.getInventoryLocation()); 
 
 // Kidsgrove here the payment has been confirmed lets save voucher details into database vCode10V0061
                                 for (TicketLineInfo line : m_oTicket.getLines()) {
