@@ -976,7 +976,7 @@ public class DataLogicSales extends BeanFactoryDataSingle {
                 switch (ticket.getTicketType()) {
                     case NORMAL:
                         if (ticket.getTicketId() == 0) {
-                            if(ticket.getProperty("tipo").matches("factura")){
+                            if(ticket.getProperty("tipo","").matches("factura")){
                                 //System.out.println("*** tipo matches factura ***");
                                 //ticket.setTicketId(getNextTicketInvoiceIndex());
                                 ticket.setProperty("num_factura", getNextTicketInvoiceIndex().toString());
