@@ -966,7 +966,7 @@ public class DataLogicSales extends BeanFactoryDataSingle {
     public final void saveTicket(final TicketInfo ticket, final String location) throws BasicException {
 
         Transaction t;
-        System.out.println("*** saveTicket ***");
+        //System.out.println("*** saveTicket ***");
 
         t = new Transaction(s) {
             @Override
@@ -977,10 +977,10 @@ public class DataLogicSales extends BeanFactoryDataSingle {
                     case NORMAL:
                         if (ticket.getTicketId() == 0) {
                             if(ticket.getProperty("tipo").matches("factura")){
-                                System.out.println("*** tipo matches factura ***");
+                                //System.out.println("*** tipo matches factura ***");
                                 //ticket.setTicketId(getNextTicketInvoiceIndex());
                                 ticket.setProperty("num_factura", getNextTicketInvoiceIndex().toString());
-                                System.out.println("*** asigned Invoice number ***");
+                                //System.out.println("*** asigned Invoice number ***");
                             }
                             ticket.setTicketId(getNextTicketIndex());
                         }
