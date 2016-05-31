@@ -475,9 +475,8 @@ public abstract class JPaymentSelect extends javax.swing.JDialog
         jRadioButton1 = new javax.swing.JRadioButton();
         jRadioButton2 = new javax.swing.JRadioButton();
         jPanel2 = new javax.swing.JPanel();
-        m_jButtonOK = new javax.swing.JButton();
         m_jButtonCancel = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
+        m_jButtonOK = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle(AppLocal.getIntString("payment.title")); // NOI18N
@@ -560,9 +559,14 @@ public abstract class JPaymentSelect extends javax.swing.JDialog
         jPanel5.add(filler2);
 
         jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder("Tipo de factura:"));
+        jPanel7.setEnabled(false);
+        jPanel7.setFocusable(false);
 
         buttonGroup1.add(jRadioButton1);
         jRadioButton1.setText("Simplificada");
+        jRadioButton1.setToolTipText("Modelo de factura por defecto, para importes inferiores a 3.000 € para clientes finales");
+        jRadioButton1.setEnabled(false);
+        jRadioButton1.setFocusable(false);
         jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRadioButton1ActionPerformed(evt);
@@ -572,11 +576,26 @@ public abstract class JPaymentSelect extends javax.swing.JDialog
 
         buttonGroup1.add(jRadioButton2);
         jRadioButton2.setText("Normal");
+        jRadioButton2.setEnabled(false);
+        jRadioButton2.setFocusable(false);
         jPanel7.add(jRadioButton2);
 
         jPanel5.add(jPanel7);
 
         jPanel2.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT));
+
+        m_jButtonCancel.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        m_jButtonCancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uk/chromis/images/cancel.png"))); // NOI18N
+        m_jButtonCancel.setText(AppLocal.getIntString("Button.Cancel")); // NOI18N
+        m_jButtonCancel.setFocusPainted(false);
+        m_jButtonCancel.setFocusable(false);
+        m_jButtonCancel.setMargin(new java.awt.Insets(8, 16, 8, 16));
+        m_jButtonCancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                m_jButtonCancelActionPerformed(evt);
+            }
+        });
+        jPanel2.add(m_jButtonCancel);
 
         m_jButtonOK.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         m_jButtonOK.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uk/chromis/images/ok.png"))); // NOI18N
@@ -593,20 +612,6 @@ public abstract class JPaymentSelect extends javax.swing.JDialog
             }
         });
         jPanel2.add(m_jButtonOK);
-
-        m_jButtonCancel.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        m_jButtonCancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uk/chromis/images/cancel.png"))); // NOI18N
-        m_jButtonCancel.setText(AppLocal.getIntString("Button.Cancel")); // NOI18N
-        m_jButtonCancel.setFocusPainted(false);
-        m_jButtonCancel.setFocusable(false);
-        m_jButtonCancel.setMargin(new java.awt.Insets(8, 16, 8, 16));
-        m_jButtonCancel.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                m_jButtonCancelActionPerformed(evt);
-            }
-        });
-        jPanel2.add(m_jButtonCancel);
-        jPanel2.add(jPanel1);
 
         jPanel5.add(jPanel2);
 
@@ -677,7 +682,6 @@ public abstract class JPaymentSelect extends javax.swing.JDialog
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.Box.Filler filler2;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
