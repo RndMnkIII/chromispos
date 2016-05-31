@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.2.1.final using JasperReports Library version 6.2.1  -->
-<!-- 2016-05-27T18:12:09 -->
+<!-- 2016-05-30T18:14:50 -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Blank_A4" pageWidth="595" pageHeight="842" columnWidth="553" leftMargin="21" rightMargin="21" topMargin="28" bottomMargin="42" uuid="1d2bc896-6bcc-4dd1-a34f-7e07c3c84dd7">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
 	<property name="com.jaspersoft.studio.unit." value="pixel"/>
@@ -92,11 +92,13 @@
 				<reportElement mode="Opaque" x="1" y="137" width="553" height="20" backcolor="#EAEAEA" uuid="770328ca-1b18-40c5-9d88-cffb191ce0d8"/>
 			</rectangle>
 			<textField isBlankWhenNull="false">
-				<reportElement key="textField-2" x="104" y="137" width="151" height="20" uuid="ff76af11-eba3-4994-a6fb-1d948351efe4"/>
+				<reportElement key="textField-2" x="104" y="137" width="151" height="20" uuid="ff76af11-eba3-4994-a6fb-1d948351efe4">
+					<printWhenExpression><![CDATA[Boolean.valueOf($F{TICKET}.getProperty("num_factura") != null)]]></printWhenExpression>
+				</reportElement>
 				<textElement>
 					<font fontName="Gadugi" size="10"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{TICKET}.printId()]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{TICKET}.getProperty("num_factura")]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="false">
 				<reportElement key="textField-3" x="300" y="137" width="200" height="21" uuid="2bf476fe-cf47-4b23-a99b-f10160c925c8"/>

@@ -204,6 +204,11 @@ public class JPanelTicketSetup extends javax.swing.JPanel implements PanelConfig
 
         jTextReceiptPrefix.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jTextReceiptPrefix.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextReceiptPrefix.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextReceiptPrefixActionPerformed(evt);
+            }
+        });
         jTextReceiptPrefix.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 jTextReceiptPrefixKeyReleased(evt);
@@ -340,6 +345,10 @@ public class JPanelTicketSetup extends javax.swing.JPanel implements PanelConfig
         }
 
     }//GEN-LAST:event_jchkSCOnOffActionPerformed
+
+    private void jTextReceiptPrefixActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextReceiptPrefixActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextReceiptPrefixActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

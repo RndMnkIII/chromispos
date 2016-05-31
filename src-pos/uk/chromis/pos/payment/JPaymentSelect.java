@@ -457,6 +457,7 @@ public abstract class JPaymentSelect extends javax.swing.JDialog
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel4 = new javax.swing.JPanel();
         m_jLblTotalEuros1 = new javax.swing.JLabel();
         m_jTotalEuros = new javax.swing.JLabel();
@@ -468,11 +469,15 @@ public abstract class JPaymentSelect extends javax.swing.JDialog
         jPanel3 = new javax.swing.JPanel();
         m_jTabPayment = new javax.swing.JTabbedPane();
         jPanel5 = new javax.swing.JPanel();
+        m_jButtonPrint = new javax.swing.JToggleButton();
+        filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(80, 0), new java.awt.Dimension(80, 0), new java.awt.Dimension(80, 32767));
+        jPanel7 = new javax.swing.JPanel();
+        jRadioButton1 = new javax.swing.JRadioButton();
+        jRadioButton2 = new javax.swing.JRadioButton();
         jPanel2 = new javax.swing.JPanel();
+        m_jButtonOK = new javax.swing.JButton();
         m_jButtonCancel = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
-        m_jButtonOK = new javax.swing.JButton();
-        m_jButtonPrint = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle(AppLocal.getIntString("payment.title")); // NOI18N
@@ -542,21 +547,36 @@ public abstract class JPaymentSelect extends javax.swing.JDialog
 
         getContentPane().add(jPanel3, java.awt.BorderLayout.CENTER);
 
-        jPanel5.setLayout(new java.awt.BorderLayout());
+        m_jButtonPrint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uk/chromis/images/printer24_off.png"))); // NOI18N
+        m_jButtonPrint.setSelected(true);
+        m_jButtonPrint.setToolTipText(bundle.getString("tiptext.printreceipt")); // NOI18N
+        m_jButtonPrint.setFocusPainted(false);
+        m_jButtonPrint.setFocusable(false);
+        m_jButtonPrint.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        m_jButtonPrint.setMargin(new java.awt.Insets(8, 16, 8, 16));
+        m_jButtonPrint.setRequestFocusEnabled(false);
+        m_jButtonPrint.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/uk/chromis/images/printer24.png"))); // NOI18N
+        jPanel5.add(m_jButtonPrint);
+        jPanel5.add(filler2);
 
-        m_jButtonCancel.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        m_jButtonCancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uk/chromis/images/cancel.png"))); // NOI18N
-        m_jButtonCancel.setText(AppLocal.getIntString("Button.Cancel")); // NOI18N
-        m_jButtonCancel.setFocusPainted(false);
-        m_jButtonCancel.setFocusable(false);
-        m_jButtonCancel.setMargin(new java.awt.Insets(8, 16, 8, 16));
-        m_jButtonCancel.addActionListener(new java.awt.event.ActionListener() {
+        jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder("Tipo de factura:"));
+
+        buttonGroup1.add(jRadioButton1);
+        jRadioButton1.setText("Simplificada");
+        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                m_jButtonCancelActionPerformed(evt);
+                jRadioButton1ActionPerformed(evt);
             }
         });
-        jPanel2.add(m_jButtonCancel);
-        jPanel2.add(jPanel1);
+        jPanel7.add(jRadioButton1);
+
+        buttonGroup1.add(jRadioButton2);
+        jRadioButton2.setText("Normal");
+        jPanel7.add(jRadioButton2);
+
+        jPanel5.add(jPanel7);
+
+        jPanel2.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT));
 
         m_jButtonOK.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         m_jButtonOK.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uk/chromis/images/ok.png"))); // NOI18N
@@ -574,17 +594,21 @@ public abstract class JPaymentSelect extends javax.swing.JDialog
         });
         jPanel2.add(m_jButtonOK);
 
-        jPanel5.add(jPanel2, java.awt.BorderLayout.LINE_END);
+        m_jButtonCancel.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        m_jButtonCancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uk/chromis/images/cancel.png"))); // NOI18N
+        m_jButtonCancel.setText(AppLocal.getIntString("Button.Cancel")); // NOI18N
+        m_jButtonCancel.setFocusPainted(false);
+        m_jButtonCancel.setFocusable(false);
+        m_jButtonCancel.setMargin(new java.awt.Insets(8, 16, 8, 16));
+        m_jButtonCancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                m_jButtonCancelActionPerformed(evt);
+            }
+        });
+        jPanel2.add(m_jButtonCancel);
+        jPanel2.add(jPanel1);
 
-        m_jButtonPrint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uk/chromis/images/printer24_off.png"))); // NOI18N
-        m_jButtonPrint.setSelected(true);
-        m_jButtonPrint.setToolTipText(bundle.getString("tiptext.printreceipt")); // NOI18N
-        m_jButtonPrint.setFocusPainted(false);
-        m_jButtonPrint.setFocusable(false);
-        m_jButtonPrint.setMargin(new java.awt.Insets(8, 16, 8, 16));
-        m_jButtonPrint.setRequestFocusEnabled(false);
-        m_jButtonPrint.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/uk/chromis/images/printer24.png"))); // NOI18N
-        jPanel5.add(m_jButtonPrint, java.awt.BorderLayout.LINE_START);
+        jPanel5.add(jPanel2);
 
         getContentPane().add(jPanel5, java.awt.BorderLayout.SOUTH);
 
@@ -646,13 +670,22 @@ public abstract class JPaymentSelect extends javax.swing.JDialog
 
     }//GEN-LAST:event_m_jButtonCancelActionPerformed
 
+    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRadioButton1ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.Box.Filler filler2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JRadioButton jRadioButton1;
+    private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JButton m_jButtonAdd;
     private javax.swing.JButton m_jButtonCancel;
     private javax.swing.JButton m_jButtonOK;
