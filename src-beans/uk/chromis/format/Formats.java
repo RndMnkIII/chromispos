@@ -111,10 +111,10 @@ public abstract class Formats {
     private static DateFormat m_timeformat = DateFormat.getTimeInstance();
     private static DateFormat m_datetimeformat = DateFormat.getDateTimeInstance();
 
-    private static final DateFormat m_hourminformat = new SimpleDateFormat("H:mm:ss");
+    private static final DateFormat m_hourminformat = new SimpleDateFormat("HH:mm:ss");
     // START of modifications by RndMnkIII
-    //private static final DateFormat m_simpledate = new SimpleDateFormat("dd-MM-yyyy");
-    private static final DateFormat m_simpledate = new SimpleDateFormat("dd MMMMMMMMMM yyyy");
+    private static final DateFormat m_simpledate = new SimpleDateFormat("dd-MM-yyyy");
+    //private static final DateFormat m_simpledate = new SimpleDateFormat("dd MMMMMMMMMM yyyy");
     // END of modifications by RndMnkIII
 
     /**
