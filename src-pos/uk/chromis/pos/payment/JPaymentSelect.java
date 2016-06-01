@@ -499,9 +499,9 @@ public abstract class JPaymentSelect extends javax.swing.JDialog
         m_jTabPayment = new javax.swing.JTabbedPane();
         jPanel5 = new javax.swing.JPanel();
         m_jButtonPrint = new javax.swing.JToggleButton();
-        filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(80, 0), new java.awt.Dimension(80, 0), new java.awt.Dimension(80, 32767));
         jPanel7 = new javax.swing.JPanel();
         jRadioButton1 = new javax.swing.JRadioButton();
+        jRadioButton1.putClientProperty("JComponent.sizeVariant", "large");
         jRadioButton2 = new javax.swing.JRadioButton();
         jPanel2 = new javax.swing.JPanel();
         m_jButtonCancel = new javax.swing.JButton();
@@ -595,13 +595,14 @@ public abstract class JPaymentSelect extends javax.swing.JDialog
             }
         });
         jPanel5.add(m_jButtonPrint);
-        jPanel5.add(filler2);
 
-        jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder("Tipo de factura:"));
+        jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tipo de factura:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 14))); // NOI18N
         jPanel7.setEnabled(false);
         jPanel7.setFocusable(false);
+        jPanel7.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
 
         buttonGroup1.add(jRadioButton1);
+        jRadioButton1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jRadioButton1.setText("Simplificada");
         jRadioButton1.setToolTipText("Modelo de factura por defecto, para importes inferiores a 3.000 € para clientes finales");
         jRadioButton1.setEnabled(false);
@@ -613,7 +614,9 @@ public abstract class JPaymentSelect extends javax.swing.JDialog
         });
         jPanel7.add(jRadioButton1);
 
+        jRadioButton2.putClientProperty("JComponent.sizeVariant", "large");
         buttonGroup1.add(jRadioButton2);
+        jRadioButton2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jRadioButton2.setText("Normal");
         jRadioButton2.setEnabled(false);
         jRadioButton2.setFocusable(false);
@@ -776,7 +779,6 @@ public abstract class JPaymentSelect extends javax.swing.JDialog
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.Box.Filler filler2;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
