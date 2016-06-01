@@ -47,9 +47,9 @@ public class SequenceForMySQL extends BaseSentence {
      * @return
      * @throws BasicException
      */
-        public DataResultSet openExec(Object params) throws BasicException {        
-        sent1.exec();
-        return sent2.openExec(null);
+        public DataResultSet openExec(Object params) throws BasicException {   
+            sent1.exec();
+            return sent2.openExec(null);
     }   
 
     /**

@@ -977,29 +977,30 @@ public class DataLogicSales extends BeanFactoryDataSingle {
                     case NORMAL:
                         if (ticket.getTicketId() == 0) {
                             //Assign ticket id number
-                            ticket.setTicketId(getNextTicketIndex());
+                            //ticket.setTicketId(getNextTicketIndex());
+                            ticket.setTicketId(getNextTicketIndex()-1); //Adjust bias by -1 because for first ticket getNextTicketIndex() returns 2
                             
                             //Assign invoice number based on invoice type attribute "tipo_factura", stored in property "num_factura"
                             if(ticket.getProperty("tipo_factura","").matches("simplificada")){
-                                Integer numInvoice=getNextTicketSimplifiedInvoiceIndex();                                
+                                Integer numInvoice=getNextTicketSimplifiedInvoiceIndex()-1;      //Adjust bias by -1                          
                                 ticket.setProperty("num_factura", numInvoice.toString());                                
                             }else{
-                                Integer numInvoice=getNextTicketInvoiceIndex();
+                                Integer numInvoice=getNextTicketInvoiceIndex()-1;//Adjust bias by -1
                                 ticket.setProperty("num_factura", numInvoice.toString());
                             }                            
                         }
                         break;
                     case REFUND:
-                        ticket.setTicketId(getNextTicketRefundIndex());
+                        ticket.setTicketId(getNextTicketRefundIndex()-1);//Adjust bias by -1 
                         break;
                     case PAYMENT:
-                        ticket.setTicketId(getNextTicketPaymentIndex());
+                        ticket.setTicketId(getNextTicketPaymentIndex()-1);//Adjust bias by -1 
                         break;
                     case NOSALE:
-                        ticket.setTicketId(getNextTicketPaymentIndex());
+                        ticket.setTicketId(getNextTicketPaymentIndex()-1);//Adjust bias by -1 
                         break;
                     case INVOICE:
-                        ticket.setTicketId(getNextTicketInvoiceIndex());
+                        ticket.setTicketId(getNextTicketInvoiceIndex()-1);//Adjust bias by -1 
                         break;
 
                     default:
@@ -1205,11 +1206,19 @@ public class DataLogicSales extends BeanFactoryDataSingle {
     public final Integer getNextTicketIndex() throws BasicException {
         return (Integer) s.DB.getSequenceSentence(s, "TICKETSNUM").find();
     }
-
+    
+    /**
+     *
+     * @return @throws BasicException
+     */
     public final Integer getNextTicketInvoiceIndex() throws BasicException {
         return (Integer) s.DB.getSequenceSentence(s, "TICKETSNUM_INVOICE").find();
     }
     
+     /**
+     *
+     * @return @throws BasicException
+     */
     public final Integer getNextTicketSimplifiedInvoiceIndex() throws BasicException {
         return (Integer) s.DB.getSequenceSentence(s, "TICKETSNUM_SIMPLIFINVOICE").find();
     }
