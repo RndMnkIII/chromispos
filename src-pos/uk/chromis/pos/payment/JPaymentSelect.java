@@ -708,9 +708,7 @@ public abstract class JPaymentSelect extends javax.swing.JDialog
         } else if (returnPayment != null) {
             m_aPaymentInfo.add(returnPayment);
             accepted = true;
-            
-        //RndMnkIII: check is jRadioButton1 is checked to add property invoice_type to ticketinfo object
-
+                 
             dispose();
         }
     }//GEN-LAST:event_m_jButtonOKActionPerformed
@@ -770,7 +768,8 @@ public abstract class JPaymentSelect extends javax.swing.JDialog
     }//GEN-LAST:event_m_jButtonPrintActionPerformed
 
     private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
-                if (jRadioButton2.isSelected()){
+            //RndMnkIII: ensures that if jRadioButton2 is selected change simpleInvoice state    
+            if (jRadioButton2.isSelected()){
                 simpleInvoice=false;
         }
     }//GEN-LAST:event_jRadioButton2ActionPerformed
