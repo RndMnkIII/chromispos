@@ -76,6 +76,7 @@ public class JPaneldbMigrate extends JPanel implements JPanelView {
     private String SQL;
     private PreparedStatement pstmt;
     private String ticketsnumInvoice;
+    private String ticketsnumSimplifInvoice;
     private String ticketsnum;
     private String ticketsnumRefund;
     private String ticketsnumPayment;
@@ -1421,6 +1422,11 @@ public class JPaneldbMigrate extends JPanel implements JPanelView {
                         while (rs.next()) {
                             ticketsnumInvoice = rs.getString("ID");
                         }
+                        SQL = "SELECT * FROM TICKETSNUM_SIMPLIFINVOICE";
+                        rs = stmt.executeQuery(SQL);
+                        while (rs.next()) {
+                            ticketsnumSimplifInvoice = rs.getString("ID");
+                        }                        
                     } else {
                         SQL = "SELECT * FROM TICKETSNUM";
                         rs = stmt.executeQuery(SQL);
@@ -1442,6 +1448,11 @@ public class JPaneldbMigrate extends JPanel implements JPanelView {
                         while (rs.next()) {
                             ticketsnumInvoice = rs.getString("LAST_VALUE");
                         }
+                       SQL = "SELECT * FROM TICKETSNUM_SIMPLIFINVOICE";
+                        rs = stmt.executeQuery(SQL);
+                        while (rs.next()) {
+                            ticketsnumSimplifInvoice = rs.getString("LAST_VALUE");
+                        }                        
                     }
 
 // WRITE SEQUENCE NUMBER
@@ -1454,6 +1465,8 @@ public class JPaneldbMigrate extends JPanel implements JPanelView {
                         stmt2.executeUpdate(SQL);
                         SQL = "UPDATE TICKETSNUM_INVOICE SET ID=" + ticketsnumInvoice;
                         stmt2.executeUpdate(SQL);
+                        SQL = "UPDATE TICKETSNUM_SIMPLIFINVOICE SET ID=" + ticketsnumSimplifInvoice;
+                        stmt2.executeUpdate(SQL);                        
                     } else if (("Apache Derby".equals(sdbmanager))) {
                         SQL = "CREATE TABLE TICKETSNUM (ID INTEGER GENERATED ALWAYS AS IDENTITY (START WITH " + ticketsnum + "))";
                         stmt2.executeUpdate(SQL);
@@ -1463,6 +1476,8 @@ public class JPaneldbMigrate extends JPanel implements JPanelView {
                         stmt2.executeUpdate(SQL);
                         SQL = "CREATE TABLE TICKETSNUM_INVOICE (ID INTEGER GENERATED ALWAYS AS IDENTITY (START WITH " + ticketsnumInvoice + "))";
                         stmt2.executeUpdate(SQL);
+                        SQL = "CREATE TABLE TICKETSNUM_SIMPLIFINVOICE (ID INTEGER GENERATED ALWAYS AS IDENTITY (START WITH " + ticketsnumSimplifInvoice + "))";
+                        stmt2.executeUpdate(SQL);                        
                     } else {
                         SQL = "ALTER SEQUENCE TICKETSNUM RESTART WITH " + ticketsnum;
                         stmt2.executeUpdate(SQL);
@@ -1472,6 +1487,8 @@ public class JPaneldbMigrate extends JPanel implements JPanelView {
                         stmt2.executeUpdate(SQL);
                         SQL = "ALTER SEQUENCE TICKETSNUM_INVOICE RESTART WITH " + ticketsnumInvoice;
                         stmt2.executeUpdate(SQL);
+                        SQL = "ALTER SEQUENCE TICKETSNUM_SIMPLIFINVOICE RESTART WITH " + ticketsnumSimplifInvoice;
+                        stmt2.executeUpdate(SQL);                        
                     }
 
 // Add ALL keys and indices back

@@ -30,6 +30,7 @@ import java.util.List;
 import java.util.Map;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.UIManager;
 import uk.chromis.format.Formats;
 import uk.chromis.pos.customers.CustomerInfoExt;
 import uk.chromis.pos.forms.AppConfig;
@@ -43,6 +44,7 @@ public abstract class JPaymentSelect extends javax.swing.JDialog
     private PaymentInfoList m_aPaymentInfo;
     private boolean printselected;
     private boolean accepted;
+    private boolean simpleInvoice;
     private AppView app;
     private double m_dTotal;
     private CustomerInfoExt customerext;
@@ -76,9 +78,15 @@ public abstract class JPaymentSelect extends javax.swing.JDialog
     public void setPrintSelected(boolean value) {
         printselected = value;
     }
+    
+    
 
     public boolean isPrintSelected() {
         return printselected;
+    }
+    
+        public boolean isSimpleInvoiceSelected() {
+        return simpleInvoice;
     }
 
     public List<PaymentInfo> getSelectedPayments() {
@@ -96,6 +104,27 @@ public abstract class JPaymentSelect extends javax.swing.JDialog
 
         setPrintSelected(!Boolean.parseBoolean(AppConfig.getInstance().getProperty("till.receiptprintoff")));
         m_jButtonPrint.setSelected(printselected);
+        
+        //RndMnkIII: ensures always an jRadioButton is selected
+        //if total Receipt is greater 3000 euros always use normal invoice. R.D. 1619/2012 Reglamento de Facturación art. 7
+        if (m_dTotal > 3000){
+            jRadioButton2.setSelected(true);
+            simpleInvoice=false;
+        } else {
+        jRadioButton1.setSelected(true);
+        simpleInvoice=true;
+        }
+        
+        
+        if(isPrintSelected()){
+            jPanel7.setEnabled(true);
+            jRadioButton1.setEnabled(true);
+            jRadioButton2.setEnabled(true);
+            jPanel7.setFocusable(true);
+            jRadioButton1.setFocusable(true);
+            jRadioButton2.setFocusable(true);
+            
+        }
 
         m_jTotalEuros.setText(Formats.CURRENCY.formatValue(m_dTotal));
 
@@ -555,6 +584,16 @@ public abstract class JPaymentSelect extends javax.swing.JDialog
         m_jButtonPrint.setMargin(new java.awt.Insets(8, 16, 8, 16));
         m_jButtonPrint.setRequestFocusEnabled(false);
         m_jButtonPrint.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/uk/chromis/images/printer24.png"))); // NOI18N
+        m_jButtonPrint.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                m_jButtonPrintStateChanged(evt);
+            }
+        });
+        m_jButtonPrint.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                m_jButtonPrintActionPerformed(evt);
+            }
+        });
         jPanel5.add(m_jButtonPrint);
         jPanel5.add(filler2);
 
@@ -578,6 +617,11 @@ public abstract class JPaymentSelect extends javax.swing.JDialog
         jRadioButton2.setText("Normal");
         jRadioButton2.setEnabled(false);
         jRadioButton2.setFocusable(false);
+        jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton2ActionPerformed(evt);
+            }
+        });
         jPanel7.add(jRadioButton2);
 
         jPanel5.add(jPanel7);
@@ -664,6 +708,8 @@ public abstract class JPaymentSelect extends javax.swing.JDialog
         } else if (returnPayment != null) {
             m_aPaymentInfo.add(returnPayment);
             accepted = true;
+            
+        //RndMnkIII: check is jRadioButton1 is checked to add property invoice_type to ticketinfo object
 
             dispose();
         }
@@ -676,8 +722,58 @@ public abstract class JPaymentSelect extends javax.swing.JDialog
     }//GEN-LAST:event_m_jButtonCancelActionPerformed
 
     private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
-        // TODO add your handling code here:
+        if (jRadioButton1.isSelected()){
+            if(m_dTotal > 3000){
+                UIManager.put("OptionPane.minimumSize",new Dimension(300,200)); 
+                JOptionPane.showMessageDialog(null, "De acuerdo con el R.D. Real Decreto 1619/2012, Art.4\nNo se podrá exceder el límite de 3.000€ en el importe total de la\nfactura simplificada, siendo el destinatario el cliente final.\nAl exceder dicho límite, deberá consignarse como factura ordinaria.", "Aviso Factura Simplificada", JOptionPane.INFORMATION_MESSAGE);
+
+                jRadioButton2.setSelected(true);
+                simpleInvoice=false;
+            }
+            else{
+                simpleInvoice=true;
+            }
+        }
     }//GEN-LAST:event_jRadioButton1ActionPerformed
+
+
+    private void m_jButtonPrintStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_m_jButtonPrintStateChanged
+
+    }//GEN-LAST:event_m_jButtonPrintStateChanged
+
+    private void m_jButtonPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_m_jButtonPrintActionPerformed
+        //RndMnkIII: ensures always an jRadioButton is selected
+        //if total Receipt is greater 3000 euros always use normal invoice. R.D. 1619/2012 Reglamento de Facturación art. 7
+        if (m_dTotal > 3000){
+            jRadioButton2.setSelected(true);
+            simpleInvoice=false;
+        } else {
+        jRadioButton1.setSelected(true);
+        simpleInvoice=true;
+        }
+        if(m_jButtonPrint.isSelected()){
+            jPanel7.setEnabled(true);
+            jRadioButton1.setEnabled(true);
+            jRadioButton2.setEnabled(true);
+            jPanel7.setFocusable(true);
+            jRadioButton1.setFocusable(true);
+            jRadioButton2.setFocusable(true);           
+        }
+        else{
+            jPanel7.setEnabled(false);
+            jRadioButton1.setEnabled(false);
+            jRadioButton2.setEnabled(false);
+            jPanel7.setFocusable(false);
+            jRadioButton1.setFocusable(false);
+            jRadioButton2.setFocusable(false);            
+        }
+    }//GEN-LAST:event_m_jButtonPrintActionPerformed
+
+    private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
+                if (jRadioButton2.isSelected()){
+                simpleInvoice=false;
+        }
+    }//GEN-LAST:event_jRadioButton2ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;

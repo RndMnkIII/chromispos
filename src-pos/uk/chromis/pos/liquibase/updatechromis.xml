@@ -601,7 +601,17 @@
         </preConditions>
         
         <sql>CREATE SEQUENCE TICKETSNUM_INVOICE START WITH 1</sql>  
-    </changeSet>  
+    </changeSet> 
+    
+    <changeSet author="Chromis POS" id="Create TICKETSNUM_SIMPLIFINVOICE Sequence." dbms="postgresql, hypersql, hsqldb">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <sequenceExists sequenceName="TICKETSNUM_SIMPLIFINVOICE"/>
+            </not>
+        </preConditions>
+        
+        <sql>CREATE SEQUENCE TICKETSNUM_SIMPLIFINVOICE START WITH 1</sql>  
+    </changeSet>    
 
     <changeSet author="Chromis Pos" id="Create TICKETSNUM Sequence INVOICE mysql if not found" dbms="mysql">
         <preConditions onFail="MARK_RAN">
@@ -613,6 +623,17 @@
         <sql>CREATE TABLE TICKETSNUM_INVOICE (ID INTEGER DEFAULT 0 NOT NULL) ENGINE=InnoDB DEFAULT CHARSET=utf8;
             INSERT INTO TICKETSNUM_INVOICE VALUES(1)</sql>
     </changeSet>
+    
+    <changeSet author="Chromis Pos" id="Create TICKETSNUM Sequence SIMPLIFINVOICE mysql if not found" dbms="mysql">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="TICKETSNUM_SIMPLIFINVOICE"/>
+            </not>
+        </preConditions>
+        
+        <sql>CREATE TABLE TICKETSNUM_SIMPLIFINVOICE (ID INTEGER DEFAULT 0 NOT NULL) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+            INSERT INTO TICKETSNUM_SIMPLIFINVOICE VALUES(1)</sql>
+    </changeSet>    
 
     <changeSet author="Chromis Pos" id="Create TICKETSNUM Sequence INVOICE oracle if not found" dbms="oracle">
         <preConditions onFail="MARK_RAN">
@@ -624,6 +645,17 @@
         <sql>CREATE TABLE TICKETSNUM_INVOICE (ID INTEGER DEFAULT 0 NOT NULL);
             INSERT INTO TICKETSNUM_INVOICE VALUES(1)</sql>
     </changeSet>
+    
+<changeSet author="Chromis Pos" id="Create TICKETSNUM Sequence SIMPLIFINVOICE oracle if not found" dbms="oracle">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="TICKETSNUM_SIMPLIFINVOICE"/>
+            </not>
+        </preConditions>
+        
+        <sql>CREATE TABLE TICKETSNUM_SIMPLIFINVOICE (ID INTEGER DEFAULT 0 NOT NULL);
+            INSERT INTO TICKETSNUM_SIMPLIFINVOICE VALUES(1)</sql>
+    </changeSet>    
 
     <changeSet author="Chromis Pos" id="CCreate TICKETSNUM Sequence INVOICE  derby if not found" dbms="derby">
         <preConditions onFail="MARK_RAN">
@@ -635,6 +667,17 @@
         <sql>CREATE TABLE TICKETSNUM_INVOICE (ID INTEGER GENERATED ALWAYS AS IDENTITY (START WITH 1));
             INSERT INTO TICKETSNUM_INVOICE VALUES (DEFAULT)</sql>
     </changeSet>
+    
+    <changeSet author="Chromis Pos" id="CCreate TICKETSNUM Sequence SIMPLIFINVOICE  derby if not found" dbms="derby">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="TICKETSNUM_SIMPLIFINVOICE"/>
+            </not>
+        </preConditions>
+        
+        <sql>CREATE TABLE TICKETSNUM_SIMPLIFINVOICE (ID INTEGER GENERATED ALWAYS AS IDENTITY (START WITH 1));
+            INSERT INTO TICKETSNUM_SIMPLIFINVOICE VALUES (DEFAULT)</sql>
+    </changeSet>    
 
     <changeSet author="Chromis POS" id="Drop faulty STOCKCHANGES Table" >    
         <preConditions onFail="MARK_RAN">

@@ -1583,8 +1583,14 @@ public abstract class JPanelTicket extends JPanel implements JPanelView, BeanFac
 
                             try {
                                 //START of modifications by RNDMNKIII
-                                //si hay asignado cliente se toma como factura simplificada
-                                if (ticket.getCustomer() != null) ticket.setProperty("tipo", "factura"); 
+                                //Guardar propiedad tipo_factura en el ticket 
+                                /*if (ticket.getCustomer() != null) ticket.setProperty("tipo", "factura"); */
+                                if(paymentdialog.isSimpleInvoiceSelected()){
+                                    ticket.setProperty("tipo_factura", "simplificada");
+                                }
+                                else {
+                                    ticket.setProperty("tipo_factura", "normal");
+                                }
                                 //END of modifications by RNDMNKIII
                                 dlSales.saveTicket(ticket, m_App.getInventoryLocation()); 
 

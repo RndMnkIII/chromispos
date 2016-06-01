@@ -976,13 +976,17 @@ public class DataLogicSales extends BeanFactoryDataSingle {
                 switch (ticket.getTicketType()) {
                     case NORMAL:
                         if (ticket.getTicketId() == 0) {
-                            if(ticket.getProperty("tipo","").matches("factura")){
+                            if(ticket.getProperty("tipo_factura","").matches("simplificada")){
                                 //System.out.println("*** tipo matches factura ***");
-                                //ticket.setTicketId(getNextTicketInvoiceIndex());
-                                ticket.setProperty("num_factura", getNextTicketInvoiceIndex().toString());
+                                Integer numInvoice=getNextTicketIndex();
+                                ticket.setTicketId(numInvoice);
+                                ticket.setProperty("num_factura", numInvoice.toString());                                
+                            }else{
+                                Integer numInvoice=getNextTicketInvoiceIndex();
+                                ticket.setTicketId(numInvoice);
+                                ticket.setProperty("num_factura", numInvoice.toString());
                                 //System.out.println("*** asigned Invoice number ***");
-                            }
-                            ticket.setTicketId(getNextTicketIndex());
+                            }                            
                         }
                         break;
                     case REFUND:
@@ -1204,6 +1208,10 @@ public class DataLogicSales extends BeanFactoryDataSingle {
 
     public final Integer getNextTicketInvoiceIndex() throws BasicException {
         return (Integer) s.DB.getSequenceSentence(s, "TICKETSNUM_INVOICE").find();
+    }
+    
+    public final Integer getNextTicketSimplifiedInvoiceIndex() throws BasicException {
+        return (Integer) s.DB.getSequenceSentence(s, "TICKETSNUM_SIMPLIFINVOICE").find();
     }
 
     /**
