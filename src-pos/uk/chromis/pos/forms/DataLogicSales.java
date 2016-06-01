@@ -976,16 +976,16 @@ public class DataLogicSales extends BeanFactoryDataSingle {
                 switch (ticket.getTicketType()) {
                     case NORMAL:
                         if (ticket.getTicketId() == 0) {
+                            //Assign ticket id number
+                            ticket.setTicketId(getNextTicketIndex());
+                            
+                            //Assign invoice number based on invoice type attribute "tipo_factura", stored in property "num_factura"
                             if(ticket.getProperty("tipo_factura","").matches("simplificada")){
-                                //System.out.println("*** tipo matches factura ***");
-                                Integer numInvoice=getNextTicketIndex();
-                                ticket.setTicketId(numInvoice);
+                                Integer numInvoice=getNextTicketSimplifiedInvoiceIndex();                                
                                 ticket.setProperty("num_factura", numInvoice.toString());                                
                             }else{
                                 Integer numInvoice=getNextTicketInvoiceIndex();
-                                ticket.setTicketId(numInvoice);
                                 ticket.setProperty("num_factura", numInvoice.toString());
-                                //System.out.println("*** asigned Invoice number ***");
                             }                            
                         }
                         break;
