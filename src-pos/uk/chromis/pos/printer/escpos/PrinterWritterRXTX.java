@@ -28,6 +28,7 @@ import gnu.io.SerialPort;
 import gnu.io.UnsupportedCommOperationException;
 import java.io.IOException;
 import java.io.OutputStream;
+import uk.chromis.pos.forms.AppConfig;
 import uk.chromis.pos.printer.TicketPrinterException;
 
 /**
@@ -64,7 +65,7 @@ public class PrinterWritterRXTX extends PrinterWritter /* implements SerialPortE
                 m_out = m_CommPortPrinter.getOutputStream(); // Tomamos el chorro de escritura   
 
                 if (m_PortIdPrinter.getPortType() == CommPortIdentifier.PORT_SERIAL) {
-                    ((SerialPort)m_CommPortPrinter).setSerialPortParams(9600, SerialPort.DATABITS_8, SerialPort.STOPBITS_1, SerialPort.PARITY_NONE); // Configuramos el puerto
+                    ((SerialPort)m_CommPortPrinter).setSerialPortParams(Integer.parseInt(AppConfig.getInstance().getProperty("machine.serialportspeed")), SerialPort.DATABITS_8, SerialPort.STOPBITS_1, SerialPort.PARITY_NONE); // Configuramos el puerto
                     ((SerialPort)m_CommPortPrinter).setFlowControlMode(SerialPort.FLOWCONTROL_RTSCTS_IN);  // this line prevents the printer tmu220 to stop printing after +-18 lines printed
                     // this line prevents the printer tmu220 to stop printing after +-18 lines printed. Bug 8324
                     // But if added a regression error appears. Bug 9417, Better to keep it commented.

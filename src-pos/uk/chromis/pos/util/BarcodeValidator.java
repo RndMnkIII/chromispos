@@ -113,9 +113,9 @@ public class BarcodeValidator {
                     checkDigit2 = (10 - (((odd / 3) + (even * 3)) % 10))% 10;    
                     
                     if (checkDigit == Character.getNumericValue(barcode.charAt(12))) {
-                        return "EAN-13";
+                        return "EAN13";
                     } else if (checkDigit2 == Character.getNumericValue(barcode.charAt(12))) {
-                        return "EAN-13";
+                        return "EAN13";
                     } else {
                         return "null";
                     }

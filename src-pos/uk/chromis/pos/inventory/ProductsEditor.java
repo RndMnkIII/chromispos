@@ -33,9 +33,13 @@ import java.util.Date;
 import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
+import org.apache.commons.lang.StringUtils;
 import uk.chromis.basic.BasicException;
 import uk.chromis.data.gui.ComboBoxValModel;
 import uk.chromis.data.loader.SentenceList;
@@ -111,13 +115,14 @@ public final class ProductsEditor extends JPanel implements EditorRecord {
         m_CodetypeModel.add(CodeType.EAN13);
         m_CodetypeModel.add(CodeType.CODE128);
         m_jCodetype.setModel(m_CodetypeModel);
-        m_jCodetype.setVisible(false);
+        m_jCodetype.setVisible(true);//RndMnkIII
 
         // Pack Product model
         packproductsent = dlSales.getPackProductList();
         packproductmodel = new ComboBoxValModel();
 
         m_jRef.getDocument().addDocumentListener(dirty);
+        ((JTextField)m_jCodetype.getEditor().getEditorComponent()).getDocument().addDocumentListener(dirty);
         m_jCode.getDocument().addDocumentListener(dirty);
         m_jName.getDocument().addDocumentListener(dirty);
         m_jComment.addActionListener(dirty);
@@ -189,18 +194,53 @@ public final class ProductsEditor extends JPanel implements EditorRecord {
 
         AutoCompleteComboBox.enable(m_jPackProduct);
     }
+    
+/**
+ * Cálculo del código de control
+ */
+private int controlCodeCalculator(String firstTwelveDigits)
+{
+     char[] charDigits = firstTwelveDigits.toCharArray();
+     int[] ean13 =
+     {
+        1, 3
+     };
+     int sum = 0;
+     for(int i = 0; i < charDigits.length; i++)
+     {
+         sum += Character.getNumericValue(charDigits[i]) * ean13[i % 2];
+     }
+     int checksum = 10 - sum % 10;
+
+     if(checksum == 10)
+         checksum = 0;
+
+     return checksum;
+}    
 
 // Set the product to be edited.  
     public void setProduct(String productID, String barcode) {
+        
         try {
             if (productID != null) {
                 ProductInfoExt info = m_dlSales.getProductInfo(productID);
 
                 Object[] myprod = new Object[DataLogicSales.FIELD_COUNT];
+                
+                m_jCodetype.setSelectedIndex(0);
+                m_jCodetype.getSelectedItem();
+                if(info.getCodetype().equals("EAN13")){
+                    m_jCodetype.setSelectedItem(CodeType.EAN13);
+                    m_jCodetype.getSelectedItem();
+                }
+                if(info.getCodetype().equals("CODE128")){
+                    m_jCodetype.setSelectedItem(CodeType.CODE128);
+                    m_jCodetype.getSelectedItem();
+                }
 
                 m_id = productID;
                 m_jRef.setText(info.getReference());
-                m_jCode.setText(info.getCode());
+                m_jCode.setText(info.getCode());            
                 m_jName.setText(info.getName());
                 m_jComment.setSelected(info.isCom());
                 m_jScale.setSelected(info.isScale());
@@ -267,6 +307,7 @@ public final class ProductsEditor extends JPanel implements EditorRecord {
         m_id = null;
         m_jRef.setText(null);
         m_jCode.setText(null);
+        m_jCodetype.setSelectedItem(null);
         m_jName.setText(null);
         m_jComment.setSelected(false);
         m_jScale.setSelected(false);
@@ -299,6 +340,7 @@ public final class ProductsEditor extends JPanel implements EditorRecord {
 
         m_jRef.setEnabled(false);
         m_jCode.setEnabled(false);
+        m_jCodetype.setEnabled(false);
         m_jName.setEnabled(false);
         m_jComment.setEnabled(false);
         m_jScale.setEnabled(false);
@@ -352,6 +394,7 @@ public final class ProductsEditor extends JPanel implements EditorRecord {
         m_id = UUID.randomUUID().toString();
         m_jRef.setText(null);
         m_jCode.setText(null);
+        m_jCodetype.setSelectedItem(null);
         m_jName.setText(null);
         m_jComment.setSelected(false);
         m_jScale.setSelected(false);
@@ -385,6 +428,7 @@ public final class ProductsEditor extends JPanel implements EditorRecord {
         // Los habilitados
         m_jRef.setEnabled(true);
         m_jCode.setEnabled(true);
+        m_jCodetype.setEnabled(true);
         m_jName.setEnabled(true);
         m_jComment.setEnabled(true);
         m_jScale.setEnabled(true);
@@ -435,6 +479,18 @@ public final class ProductsEditor extends JPanel implements EditorRecord {
         m_id = myprod[DataLogicSales.INDEX_ID];
         m_jRef.setText(Formats.STRING.formatValue(myprod[DataLogicSales.INDEX_REFERENCE]));
         m_jCode.setText(Formats.STRING.formatValue(myprod[DataLogicSales.INDEX_CODE]));
+        
+        m_jCodetype.setSelectedIndex(0);
+        m_jCodetype.getSelectedItem();
+        if(Formats.STRING.formatValue(myprod[DataLogicSales.INDEX_CODETYPE]).equals("EAN13")){
+            m_jCodetype.setSelectedItem(CodeType.EAN13);
+            m_jCodetype.getSelectedItem();
+        }
+        if(Formats.STRING.formatValue(myprod[DataLogicSales.INDEX_CODETYPE]).equals("CODE128")){
+            m_jCodetype.setSelectedItem(CodeType.CODE128);
+            m_jCodetype.getSelectedItem();
+        }       
+        
         m_jName.setText(Formats.STRING.formatValue(myprod[DataLogicSales.INDEX_NAME]));
         m_jComment.setSelected(((Boolean) myprod[DataLogicSales.INDEX_ISCOM]));
         m_jScale.setSelected(((Boolean) myprod[DataLogicSales.INDEX_ISSCALE]));
@@ -497,6 +553,7 @@ public final class ProductsEditor extends JPanel implements EditorRecord {
         // Los habilitados
         m_jRef.setEnabled(false);
         m_jCode.setEnabled(false);
+        m_jCodetype.setEnabled(false);
         m_jName.setEnabled(false);
         m_jComment.setEnabled(false);
         m_jScale.setEnabled(false);
@@ -555,6 +612,7 @@ public final class ProductsEditor extends JPanel implements EditorRecord {
         // Los habilitados
         m_jRef.setEnabled(true);
         m_jCode.setEnabled(true);
+        m_jCodetype.setEnabled(true);
         m_jName.setEnabled(true);
         m_jComment.setEnabled(true);
         m_jScale.setEnabled(true);
@@ -618,7 +676,8 @@ public final class ProductsEditor extends JPanel implements EditorRecord {
             code = code.substring(0, 10);
         }
         myprod[DataLogicSales.INDEX_CODE] = code;
-        myprod[DataLogicSales.INDEX_CODETYPE] = BarcodeValidator.BarcodeValidate(m_jCode.getText());
+        //myprod[DataLogicSales.INDEX_CODETYPE] = BarcodeValidator.BarcodeValidate(m_jCode.getText());
+        myprod[DataLogicSales.INDEX_CODETYPE] = m_jCodetype.getSelectedItem().toString();
         myprod[DataLogicSales.INDEX_NAME] = m_jName.getText();
         myprod[DataLogicSales.INDEX_ISCOM] = m_jComment.isSelected();
         myprod[DataLogicSales.INDEX_ISSCALE] = m_jScale.isSelected();
@@ -786,6 +845,8 @@ public final class ProductsEditor extends JPanel implements EditorRecord {
             reportlock = false;
         }
     }
+    
+
 
     private void calculateGP() {
 
@@ -1007,7 +1068,6 @@ public final class ProductsEditor extends JPanel implements EditorRecord {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         m_jRef = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
         m_jCode = new javax.swing.JTextField();
         m_jCodetype = new javax.swing.JComboBox();
         jLabel34 = new javax.swing.JLabel();
@@ -1037,6 +1097,8 @@ public final class ProductsEditor extends JPanel implements EditorRecord {
         jLabel36 = new javax.swing.JLabel();
         jComboBoxPromotion = new javax.swing.JComboBox();
         jCheckBoxPromotion = new eu.hansolo.custom.SteelCheckBox();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         m_jstockcost = new javax.swing.JTextField();
@@ -1086,7 +1148,7 @@ public final class ProductsEditor extends JPanel implements EditorRecord {
 
         m_jTitle.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         m_jTitle.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        add(m_jTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 0, 330, 30));
+        add(m_jTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 620, 30));
 
         jTabbedPane1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
 
@@ -1104,20 +1166,35 @@ public final class ProductsEditor extends JPanel implements EditorRecord {
             }
         });
         jPanel1.add(m_jRef);
-        m_jRef.setBounds(130, 10, 80, 25);
-
-        jLabel6.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel6.setText(AppLocal.getIntString("label.prodbarcode")); // NOI18N
-        jPanel1.add(jLabel6);
-        jLabel6.setBounds(10, 40, 110, 25);
+        m_jRef.setBounds(130, 10, 450, 25);
 
         m_jCode.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        m_jCode.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                m_jCodeFocusLost(evt);
+            }
+        });
+        m_jCode.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                m_jCodeActionPerformed(evt);
+            }
+        });
+        m_jCode.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                m_jCodePropertyChange(evt);
+            }
+        });
         jPanel1.add(m_jCode);
-        m_jCode.setBounds(130, 40, 170, 25);
+        m_jCode.setBounds(390, 40, 190, 25);
 
         m_jCodetype.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        m_jCodetype.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                m_jCodetypeActionPerformed(evt);
+            }
+        });
         jPanel1.add(m_jCodetype);
-        m_jCodetype.setBounds(310, 40, 90, 25);
+        m_jCodetype.setBounds(130, 40, 130, 25);
 
         jLabel34.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel34.setText(AppLocal.getIntString("Label.Alias")); // NOI18N
@@ -1131,7 +1208,7 @@ public final class ProductsEditor extends JPanel implements EditorRecord {
             }
         });
         jPanel1.add(m_jName);
-        m_jName.setBounds(130, 70, 270, 25);
+        m_jName.setBounds(130, 70, 450, 25);
 
         jLabel5.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel5.setText(AppLocal.getIntString("label.prodcategory")); // NOI18N
@@ -1140,7 +1217,7 @@ public final class ProductsEditor extends JPanel implements EditorRecord {
 
         m_jCategory.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jPanel1.add(m_jCategory);
-        m_jCategory.setBounds(130, 130, 170, 25);
+        m_jCategory.setBounds(130, 130, 450, 25);
 
         jLabel13.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel13.setText(AppLocal.getIntString("label.attributes")); // NOI18N
@@ -1191,10 +1268,10 @@ public final class ProductsEditor extends JPanel implements EditorRecord {
 
         m_jmargin.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         m_jmargin.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-        m_jmargin.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        m_jmargin.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         m_jmargin.setEnabled(false);
         jPanel1.add(m_jmargin);
-        m_jmargin.setBounds(470, 220, 70, 25);
+        m_jmargin.setBounds(470, 220, 110, 25);
 
         jLabel3.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel3.setText(AppLocal.getIntString("label.prodpricebuy")); // NOI18N
@@ -1208,7 +1285,7 @@ public final class ProductsEditor extends JPanel implements EditorRecord {
 
         m_jTextTip.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jPanel1.add(m_jTextTip);
-        m_jTextTip.setBounds(130, 320, 220, 25);
+        m_jTextTip.setBounds(130, 320, 450, 25);
 
         jLabel21.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel21.setText(bundle.getString("label.texttip")); // NOI18N
@@ -1220,7 +1297,7 @@ public final class ProductsEditor extends JPanel implements EditorRecord {
         m_jGrossProfit.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         m_jGrossProfit.setEnabled(false);
         jPanel1.add(m_jGrossProfit);
-        m_jGrossProfit.setBounds(470, 250, 70, 25);
+        m_jGrossProfit.setBounds(470, 250, 110, 25);
 
         jLabel22.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel22.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -1243,7 +1320,7 @@ public final class ProductsEditor extends JPanel implements EditorRecord {
 
         m_jCheckWarrantyReceipt.setText(bundle.getString("label.productreceipt")); // NOI18N
         jPanel1.add(m_jCheckWarrantyReceipt);
-        m_jCheckWarrantyReceipt.setBounds(130, 350, 260, 30);
+        m_jCheckWarrantyReceipt.setBounds(10, 350, 260, 30);
 
         jLabel36.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel36.setText("Promotion");
@@ -1252,7 +1329,7 @@ public final class ProductsEditor extends JPanel implements EditorRecord {
 
         jComboBoxPromotion.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jPanel1.add(jComboBoxPromotion);
-        jComboBoxPromotion.setBounds(160, 280, 380, 30);
+        jComboBoxPromotion.setBounds(160, 280, 420, 30);
 
         jCheckBoxPromotion.setText(" ");
         jCheckBoxPromotion.addActionListener(new java.awt.event.ActionListener() {
@@ -1262,6 +1339,16 @@ public final class ProductsEditor extends JPanel implements EditorRecord {
         });
         jPanel1.add(jCheckBoxPromotion);
         jCheckBoxPromotion.setBounds(130, 280, 30, 30);
+
+        jLabel8.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel8.setText(AppLocal.getIntString("label.prodbarcode")); // NOI18N
+        jPanel1.add(jLabel8);
+        jLabel8.setBounds(270, 40, 110, 25);
+
+        jLabel11.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel11.setText("Tipo Cod. Barras");
+        jPanel1.add(jLabel11);
+        jLabel11.setBounds(10, 40, 110, 20);
 
         jTabbedPane1.addTab(AppLocal.getIntString("label.prodgeneral"), jPanel1); // NOI18N
 
@@ -1524,7 +1611,7 @@ public final class ProductsEditor extends JPanel implements EditorRecord {
 
         jTabbedPane1.addTab(AppLocal.getIntString("label.properties"), jPanel3); // NOI18N
 
-        add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 600, 420));
+        add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 600, 420));
     }// </editor-fold>//GEN-END:initComponents
 
     private void m_jRefFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_m_jRefFocusLost
@@ -1590,12 +1677,64 @@ public final class ProductsEditor extends JPanel implements EditorRecord {
         }
     }//GEN-LAST:event_m_jPackQuantityFocusLost
 
+    private void m_jCodetypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_m_jCodetypeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_m_jCodetypeActionPerformed
+
+    private void m_jCodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_m_jCodeActionPerformed
+
+    }//GEN-LAST:event_m_jCodeActionPerformed
+
+    private void m_jCodePropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_m_jCodePropertyChange
+         //RndMnkIII
+                Integer checkDigit;
+                if(m_jCode.getText().length() == 12 && StringUtils.isNumeric(m_jCode.getText()) && m_jCodetype.getSelectedItem().toString().equals("EAN13")){
+                    checkDigit=controlCodeCalculator(m_jCode.getText());
+                    m_jCode.setText(m_jCode.getText()+Integer.toString(checkDigit));
+                }
+    }//GEN-LAST:event_m_jCodePropertyChange
+
+    private void m_jCodeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_m_jCodeFocusLost
+        //RndMnkIII
+        System.out.println("*** m_jCodeFocusLost ***");
+        Integer checkDigit;
+        //Si introduces codigo de barras EAN13 sin digito de control lo calcula y añade,
+        //seleccionar previamente el tipo de codigo de barras (EAN13) antes de introducirlo
+        if(m_jCode.getText().length() == 12 && m_jCode.getText().matches("[0-9]+")){
+            if(m_jCodetype.getSelectedItem().toString().equals("EAN13")){
+                checkDigit=controlCodeCalculator(m_jCode.getText());
+                m_jCode.setText(m_jCode.getText()+Integer.toString(checkDigit));
+            }
+        }
+        if(m_jCode.getText().length() == 13 && m_jCodetype.getSelectedItem().toString().equals("EAN13") && !m_jCode.getText().matches("[0-9]+")){
+            System.out.println("*** no numerico ***");
+            JFrame frame = new JFrame("JOptionPane showMessageDialog example");
+            JOptionPane.showMessageDialog(frame,
+            "Introdujo caracteres no numéricos",           
+            "Error Código de Barras",
+            JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+        if(m_jCode.getText().length() == 13 && m_jCodetype.getSelectedItem().toString().equals("EAN13")){
+            if(BarcodeValidator.BarcodeValidate(m_jCode.getText()).equals("null")){   
+                if(m_jCode.getText().matches("[0-9]+")){
+                    JFrame frame = new JFrame("JOptionPane showMessageDialog example");
+                    JOptionPane.showMessageDialog(frame,
+                    "Dígito de control incorrecto\nDebería ser: "+controlCodeCalculator(m_jCode.getText().substring(0,12)),           
+                    "Error Código de Barras",
+                    JOptionPane.INFORMATION_MESSAGE);
+                }
+            }
+        }
+    }//GEN-LAST:event_m_jCodeFocusLost
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonHTML;
     private eu.hansolo.custom.SteelCheckBox jCheckBoxPromotion;
     private javax.swing.JComboBox jComboBoxPromotion;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
@@ -1619,8 +1758,8 @@ public final class ProductsEditor extends JPanel implements EditorRecord {
     private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabelPackProduct;
     private javax.swing.JLabel jLabelPackQuantity;

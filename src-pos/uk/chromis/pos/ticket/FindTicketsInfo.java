@@ -32,6 +32,8 @@ import uk.chromis.format.Formats;
 public class FindTicketsInfo implements SerializableRead {
     
     private int ticketid;
+    //RndMnkIII:to show num_factura
+    private int invoice_number;
     private int tickettype;
     private Date date;
     private String name;
