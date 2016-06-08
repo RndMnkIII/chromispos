@@ -78,7 +78,7 @@ public class ProductsPanel extends JPanelTable2 implements EditorListener {
         jeditor = new ProductsEditor(m_dlSales, dirty);
 
         if (AppConfig.getInstance().getBoolean("display.longnames")) {
-            setListWidth(300);
+            setListWidth(450);
         }
     }
 
