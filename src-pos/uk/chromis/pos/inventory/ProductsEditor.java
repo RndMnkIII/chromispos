@@ -776,11 +776,21 @@ private int controlCodeCalculator(String firstTwelveDigits)
             reportlock = true;
 
             if (length == 0) {
-//                m_jDisplay.setText("<html>" + "Need Button Text");
+//                m_jDisplay.setText("<html><font size=-3>" + "Need Button Text");
                 m_jDisplay.setText(m_jName.getText());
             } else if (m_jDisplay.getText() == null || "".equals(m_jDisplay.getText())) {
                 m_jDisplay.setText("<html>" + m_jName.getText());
             }
+            reportlock = false;
+        }
+    }
+    
+        private void setDisplay2() {
+
+        if (!reportlock) {
+            reportlock = true;
+            m_jDisplay.setText("<html><font size=-3>" + m_jName.getText()+ "</font><br><font size=-2>" + m_jAlias.getText() + "</font>");
+            
             reportlock = false;
         }
     }
@@ -1255,6 +1265,11 @@ private int controlCodeCalculator(String firstTwelveDigits)
 
         m_jPriceSell.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         m_jPriceSell.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        m_jPriceSell.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                m_jPriceSellFocusLost(evt);
+            }
+        });
         jPanel1.add(m_jPriceSell);
         m_jPriceSell.setBounds(310, 220, 70, 25);
 
@@ -1306,6 +1321,11 @@ private int controlCodeCalculator(String firstTwelveDigits)
         jLabel22.setBounds(370, 250, 90, 20);
 
         m_jAlias.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        m_jAlias.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                m_jAliasFocusLost(evt);
+            }
+        });
         jPanel1.add(m_jAlias);
         m_jAlias.setBounds(130, 100, 170, 25);
 
@@ -1619,7 +1639,8 @@ private int controlCodeCalculator(String firstTwelveDigits)
     }//GEN-LAST:event_m_jRefFocusLost
 
     private void m_jNameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_m_jNameFocusLost
-        setDisplay();
+        //setDisplay();
+        setDisplay2();
     }//GEN-LAST:event_m_jNameFocusLost
 
     private void jButtonHTMLMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonHTMLMouseClicked
@@ -1728,6 +1749,23 @@ private int controlCodeCalculator(String firstTwelveDigits)
         }
     }//GEN-LAST:event_m_jCodeFocusLost
 
+    private void m_jAliasFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_m_jAliasFocusLost
+        setDisplay2();
+    }//GEN-LAST:event_m_jAliasFocusLost
+
+    private void m_jPriceSellFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_m_jPriceSellFocusLost
+        setPriceBuy();
+    }//GEN-LAST:event_m_jPriceSellFocusLost
+
+    private void setPriceBuy(){
+        //Always sets 60% of pricesell
+        Double pricebuy = ((Double)pricesell) * 0.6;
+        if (!priceselllock) {
+            priceselllock = true;
+            m_jPriceBuy.setText(Formats.CURRENCY.formatValue(pricebuy));
+            priceselllock = false;
+        }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonHTML;
     private eu.hansolo.custom.SteelCheckBox jCheckBoxPromotion;
