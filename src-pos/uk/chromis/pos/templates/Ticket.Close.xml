@@ -1,70 +1,151 @@
-//   Chromis POS - The New Face of Open Source POS 
-//   Copyright (c) (c) 2015-2016Chromis , previous uniCenta & Openbravo POS works   
+
+//Fanzam -- Auto Change Timer
+//Ticket Close 22/10/2015
 //
-//   This file is part of chromis oPOS
+//    Chromis Pos - The new face of Open Source POS
+//    Copyright (c) 2015 Chromis
+//    http://www.chromis.co.uk
 //
-//   Chromis POS is free software: you can redistribute it and/or modify
-//   it under the terms of the GNU General Public License as published by
-//   the Free Software Foundation, either version 3 of the License, or
-//   (at your option) any later version.
+//    This file is part of Chromis Pos.
 //
-//   Chromis POS is distributed in the hope that it will be useful,
-//   but WITHOUT ANY WARRANTY; without even the implied warranty of
-//   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-//   GNU General Public License for more details.
+//    Chromis Pos is free software: you can redistribute it and/or modify
+//    it under the terms of the GNU General Public License as published by
+//    the Free Software Foundation, either version 3 of the License, or
+//    (at your option) any later version.
 //
-//   You should have received a copy of the GNU General Public License
-//   along with Chromis POS.  If not, see <http://www.gnu.org/licenses/>.
+//    Chromis Pos is distributed in the hope that it will be useful,
+//    but WITHOUT ANY WARRANTY; without even the implied warranty of
+//    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//    GNU General Public License for more details.
+//
+//    You should have received a copy of the GNU General Public License
+//    along with Chromis Pos.  If not, see <http://www.gnu.org/licenses/>.
 // **************************************************************************
 // Ticket.Close
-// This script displays the amount of Cash Change (CashTendered - TicketValue) to be given to Customer
+// This script displays: 
+// - Total of the ticked
+// - Tendered 
+// - Change amount of Cash Change to be given to Customer
 
 import java.awt.Font; 
 import javax.swing.plaf.FontUIResource; 
 import uk.chromis.pos.payment.PaymentInfo;
 import javax.swing.JOptionPane;
 import javax.swing.JDialog;
-import uk.chromis.pos.forms.AppConfig;
-import uk.chromis.pos.printer.TicketPrinterException;
-import uk.chromis.pos.forms.DataLogicSystem;
+
+
+import java.awt.Component;
+import java.awt.Container;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
+import javax.swing.JDialog;
+import javax.swing.JOptionPane;
+import javax.swing.Timer;
+
 
 boolean isCash = false;
 String change = "";
+String paid = "";
+String total = "";
+
 PaymentInfo p = ticket.payments.getFirst();
 
 if ("cash".equals(p.getName())) {
     isCash = true;
+    paid = p.printPaid();
+    total = p.printTotal();
     change = p.printChange();
 }
 
+ private JButton getOkButton( Container cont ) {
+		Component[] components = cont.getComponents();
+		for( int k = 0; k < components.length; k++ ) {
+			Component comp = components[k];
+		
+			if( comp instanceof JButton ) {
+				JButton button = (JButton)comp;
+
+				if( button.getText() == "OK" )
+					return button;
+			} else if( comp instanceof Container ) {
+				JButton button = getOkButton( (Container)comp );
+				if( button != null ) return button;
+			}
+		}
+		
+		return null;
+	}
+
+	private class CountdownListener implements ActionListener {
+		private JButton _button;
+		private Timer _timer;
+		private int _ticks;
+		public CountdownListener( JButton button, Timer timer ) {
+			_button = button;
+			_timer = timer;
+			_ticks = 5;
+		}
+
+		
+		public void actionPerformed(ActionEvent ae) {
+			if( _ticks > 0 ) {
+				_button.setText( "OK ("+_ticks+")" );
+				_button.setEnabled(true);		
+			} else {
+				_button.doClick();
+			}
+			--_ticks;
+		}
+	}
+
+
 // Get details of the original font before we change it otherwise all dialogboxes will use new settings
+
 JOptionPane pane = new JOptionPane();
 Font originalFont=pane.getFont();
 
 UIManager.put("OptionPane.buttonFont", new FontUIResource(new Font("ARIAL",Font.PLAIN,20)));
-message = "Change: " + change;
+message = "<HTML><table>";
+message = message + "<tr><th style=\"text-align:right\">Total : </th><th style=\"text-align:right\">" + total + "</th></tr>";
+message = message + "<tr><th style=\"text-align:right\">Pagado : </th><th style=\"text-align:right\">" + paid + "</th></tr>";  
+message = message + "<tr><th style=\"text-align:right\">Cambio : </th><th style=\"text-align:right\">" + change + "</th></tr>";
+message = message + "</table>";
+
+
+
+
+
  JLabel FontText = new JLabel(message);
  FontText.setFont (new Font ( "Arial", Font.BOLD, 36) );
 
 if(isCash) {
-     JOptionPane pane = new JOptionPane();
-     pane.setMessage(FontText);
-     pane.setPreferredSize( new Dimension(450,150));
-     JDialog dialog = pane.createDialog("Cash payment");    
+
+
+Object[] options = { "OK" };
+JOptionPane pane = new JOptionPane(message, JOptionPane.PLAIN_MESSAGE, JOptionPane.OK_CANCEL_OPTION,null, options);
+pane.setMessage(FontText);
+pane.setPreferredSize( new Dimension(450,250));
+	
+JButton okButton = getOkButton( pane );
+okButton.setEnabled(false);
+JDialog dialog = pane.createDialog("Pago en metálico");
+dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+Timer t = new Timer(0, null);
+t.setDelay(1000);
+t.setRepeats(true);
+CountdownListener countdownListener = new CountdownListener( okButton, t );
+t.addActionListener( countdownListener );
+t.start();
     new Thread(new Runnable() {
          void run() {
             dialog.show();
-         try {
-             m_TTP.printTicket(dlSystem.getResourceAsXML("Display.Message"));
-         } catch (TicketPrinterException ex) {
-             m_App.getDeviceTicket().getDeviceDisplay().writeVisor(AppLocal.APP_NAME, AppLocal.APP_VERSION);
-         }
-
-
-
         } 
     }).start();
 }
+
+
+
 
 
 // Return to default settings
