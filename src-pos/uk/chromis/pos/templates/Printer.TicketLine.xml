@@ -20,17 +20,26 @@
  -->
 <output>
     <display>
-        <line>
+        <line1>
             #if ($ticketline.isProductCom()) 
-                <text align="left" length="15">*${ticketline.printName()}</text>
+                <text align="left" length="20">*${ticketline.printName()}</text>
             #else
-                 <text align="left" length="15">${ticketline.printName()}</text>
-            #end
-            <text align="right" length="4">x${ticketline.printMultiply()}</text>            
-        </line>
-        <line>
-            <text align="left" length="10">${ticketline.printPrice()}</text>
+                 <text align="left" length="20">${ticketline.printName()}</text>
+            #end            
+        </line1>
+        <line2>
+           <text align="left" length="5">Prec.</text>
+            <text align="right" length="9">${ticketline.printPrice()}</text>
+            <text align="left" length="2"> X</text>
+            <text align="right" length="4">${ticketline.printMultiply()}</text>
+        </line2>
+        <line3>
+            <text align="left" length="10">Subtotal:</text>
             <text align="right" length="10">${ticketline.printSubValue()}</text>
-        </line>
+        </line3>
+        <line4>
+            <text align="left" length="10">TOTAL+IVA:</text>
+            <text align="right" length="10">${ticket.printTotal()}</text>
+        </line4>
     </display>
 </output>

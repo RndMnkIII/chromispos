@@ -18,14 +18,39 @@
    You should have received a copy of the GNU General Public License
    along with Chromis POS.  If not, see <http://www.gnu.org/licenses/>.
  -->
+
+
 <output>   
     <display>
-        <line>
+boolean isCash = false;
+String change = "";
+String paid = "";
+String total = "";
+
+PaymentInfo p = ticket.payments.getFirst();
+
+if ("cash".equals(p.getName())) {
+    isCash = true;
+    paid = p.printPaid();
+    total = p.printTotal();
+    change = p.printChange();
+}
+
+        <line1>
             <text align="left" length="10">Total:</text>
             <text align="right" length="10">${ticket.printTotal()}</text>
-        </line>
-        <line>
-           <text align="center" length="20">Thank you</text>
-        </line>
+        </line1>
+        <line2>
+            <text align="left" length="10">Pagado:</text>
+            <!-- <text align="right" length="10">${paid}</text> -->
+        </line2>
+        <line3>
+            <text align="left" length="10">Cambio:</text>
+            <!-- <text align="right" length="10">${change}</text> -->
+        </line3>
+        <line4>
+           <text align="center" length="20">Gracias por comprar</text>
+        </line4>
     </display>
 </output>
+
