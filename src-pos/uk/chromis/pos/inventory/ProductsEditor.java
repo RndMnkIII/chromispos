@@ -23,20 +23,25 @@ import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.nio.charset.StandardCharsets;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Date;
+import java.util.Enumeration;
+import java.util.Properties;
 import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import org.apache.commons.lang.StringUtils;
@@ -122,7 +127,7 @@ public final class ProductsEditor extends JPanel implements EditorRecord {
         packproductmodel = new ComboBoxValModel();
 
         m_jRef.getDocument().addDocumentListener(dirty);
-        ((JTextField)m_jCodetype.getEditor().getEditorComponent()).getDocument().addDocumentListener(dirty);
+        //((JTextField)m_jCodetype.getEditor().getEditorComponent()).getDocument().addDocumentListener(dirty);
         m_jCode.getDocument().addDocumentListener(dirty);
         m_jName.getDocument().addDocumentListener(dirty);
         m_jComment.addActionListener(dirty);
@@ -516,6 +521,25 @@ private int controlCodeCalculator(String firstTwelveDigits)
         m_jInCatalog.setSelected(((Boolean) myprod[DataLogicSales.INDEX_ISCATALOG]));
         m_jCatalogOrder.setText(Formats.INT.formatValue(myprod[DataLogicSales.INDEX_CATORDER]));
         txtAttributes.setText(Formats.BYTEA.formatValue(myprod[DataLogicSales.INDEX_ATTRIBUTES]));
+        if(!txtAttributes.getText().equals("")){
+            String cadena=txtAttributes.getText();
+            InputStream stream = new ByteArrayInputStream(cadena.getBytes(StandardCharsets.UTF_8));
+            Properties prop = new Properties();
+            try {
+                prop.loadFromXML(stream);
+                Enumeration enuKeys = prop.keys();
+			while (enuKeys.hasMoreElements()) {
+				String key = (String) enuKeys.nextElement();
+				String value = prop.getProperty(key);
+				System.out.println(key + ": " + value);
+			}
+            } catch (IOException ex){
+                Logger.getLogger(ProductsEditor.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            prop.list(System.out);
+            //System.out.println("* Valor1: "+prop.getProperty("valor1"));
+            //System.out.println("* Valor2: "+prop.getProperty("valor2"));
+        }
         m_jKitchen.setSelected(((Boolean) myprod[DataLogicSales.INDEX_ISKITCHEN]));
         m_jService.setSelected(((Boolean) myprod[DataLogicSales.INDEX_ISSERVICE]));
         m_jDisplay.setText(Formats.STRING.formatValue(myprod[DataLogicSales.INDEX_DISPLAY]));
