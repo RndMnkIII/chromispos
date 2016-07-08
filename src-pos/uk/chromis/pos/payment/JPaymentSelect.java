@@ -85,9 +85,14 @@ public abstract class JPaymentSelect extends javax.swing.JDialog
         return printselected;
     }
     
-        public boolean isSimpleInvoiceSelected() {
+    public boolean isSimpleInvoiceSelected() {
         return simpleInvoice;
     }
+        
+    public String getInvoiceNumber() {
+        return jTextField1.getText();
+    }
+    
 
     public List<PaymentInfo> getSelectedPayments() {
         return m_aPaymentInfo.getPayments();
@@ -500,6 +505,8 @@ public abstract class JPaymentSelect extends javax.swing.JDialog
         jPanel5 = new javax.swing.JPanel();
         m_jButtonPrint = new javax.swing.JToggleButton();
         jPanel7 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
         jRadioButton1 = new javax.swing.JRadioButton();
         jRadioButton1.putClientProperty("JComponent.sizeVariant", "large");
         jRadioButton2 = new javax.swing.JRadioButton();
@@ -575,6 +582,8 @@ public abstract class JPaymentSelect extends javax.swing.JDialog
 
         getContentPane().add(jPanel3, java.awt.BorderLayout.CENTER);
 
+        jPanel5.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
+
         m_jButtonPrint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uk/chromis/images/printer24_off.png"))); // NOI18N
         m_jButtonPrint.setSelected(true);
         m_jButtonPrint.setToolTipText(bundle.getString("tiptext.printreceipt")); // NOI18N
@@ -596,10 +605,23 @@ public abstract class JPaymentSelect extends javax.swing.JDialog
         });
         jPanel5.add(m_jButtonPrint);
 
-        jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tipo de factura:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 14))); // NOI18N
+        jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Factura:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 14))); // NOI18N
         jPanel7.setEnabled(false);
         jPanel7.setFocusable(false);
         jPanel7.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
+
+        jLabel1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel1.setText("Nº:");
+        jPanel7.add(jLabel1);
+
+        jTextField1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jTextField1.setPreferredSize(new java.awt.Dimension(64, 23));
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
+        jPanel7.add(jTextField1);
 
         buttonGroup1.add(jRadioButton1);
         jRadioButton1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -628,6 +650,7 @@ public abstract class JPaymentSelect extends javax.swing.JDialog
         jPanel7.add(jRadioButton2);
 
         jPanel5.add(jPanel7);
+        jPanel7.getAccessibleContext().setAccessibleName("Factura:");
 
         jPanel2.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT));
 
@@ -777,8 +800,13 @@ public abstract class JPaymentSelect extends javax.swing.JDialog
         }
     }//GEN-LAST:event_jRadioButton2ActionPerformed
 
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -787,6 +815,7 @@ public abstract class JPaymentSelect extends javax.swing.JDialog
     private javax.swing.JPanel jPanel7;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JButton m_jButtonAdd;
     private javax.swing.JButton m_jButtonCancel;
     private javax.swing.JButton m_jButtonOK;

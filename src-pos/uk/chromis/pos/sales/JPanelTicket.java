@@ -1592,7 +1592,10 @@ public abstract class JPanelTicket extends JPanel implements JPanelView, BeanFac
                                     ticket.setProperty("tipo_factura", "normal");
                                 }
                                 //END of modifications by RNDMNKIII
-                                dlSales.saveTicket(ticket, m_App.getInventoryLocation()); 
+                                if(paymentdialog.getInvoiceNumber().matches("\\d+"))//es valor numerico entero
+                                    dlSales.saveTicket(ticket, m_App.getInventoryLocation(),paymentdialog.getInvoiceNumber()); 
+                                else
+                                    dlSales.saveTicket(ticket, m_App.getInventoryLocation());
 
 // Kidsgrove here the payment has been confirmed lets save voucher details into database vCode10V0061
                                 for (TicketLineInfo line : m_oTicket.getLines()) {
