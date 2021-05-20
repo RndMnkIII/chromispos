@@ -1,8 +1,9 @@
+# ***********
+# IMPORTANT:
+# **********
 18th May 2016
 Relase:modified v0.56.2 branch NO OFFICIAL
-***********
- IMPORTANT:
- **********
+
 I've included several changes in the source code of the original 0.56.2 Chromis POS. This repository is related to https://github.com/RndMnkIII/arduinoPOS_Screen and should be seen as a proof of concept, not as a new release or official release
 Mainly the class affected are in the pos.uk.chromis.pos.printer package: DisplayAnimator, BaseAnimator, DeviceDisplayBase, ...
 and modified code in JPanelTicket adding the methods visorTicketLine2, visorTicketLine3 and modified calls to visorTicketLine to include additional data to display in the customer display (with 4 lines). Other changes affect to the method to count total number of items in the ticked to omit count discount lines. Not related but included there are changes in several classes in the pos.uk.chromis.pos.ticket package: TaxInfo, TicketInfo, TicketLineInfo and TicketTaxInfo including the use of BigDecimal class.
@@ -11,7 +12,7 @@ I've tweaked the DeviceDisplaySurePOS.java class to modify initVisor(),repaintLi
 I've planned to create a new class inhereted from DeviceDisplaySerial for this in near future instead tweak this class
 
 Other changes affects the ChromisPOS scripts in resources:
-- Printer.TicketLine:
+```- Printer.TicketLine:
 <output>
     <display>
         <line1>
@@ -65,3 +66,4 @@ Other changes affects the ChromisPOS scripts in resources:
         </line4>
     </display>
 </output>
+```
