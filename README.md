@@ -1,6 +1,5 @@
-# ***********
 # IMPORTANT:
-# **********
+
 18th May 2016
 Relase:modified v0.56.2 branch NO OFFICIAL
 
